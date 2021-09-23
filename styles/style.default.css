@@ -101,6 +101,7 @@ h1 {
 
 #top a {
   color: #fff;
+  font-size: 12px;
 }
 
 #top ul.menu {
@@ -162,6 +163,7 @@ h1 {
   font-weight: 700;
   padding: 30px 15px !important;
   color: #555;
+  font-size: 13px;
 }
 
 @media (max-width: 991.98px) {
@@ -173,6 +175,12 @@ h1 {
 .navbar .navbar-nav > .nav-item > .nav-link.active, .navbar .navbar-nav > .nav-item > .nav-link:hover, .navbar .navbar-nav > .nav-item > .nav-link:focus {
   background: #f89310;
 }
+
+.navbar .navbar-nav > .nav-item > .nav-link:hover{
+  background-color: #242424;
+  color:#fff;
+}
+
 
 @media (max-width: 991.98px) {
   .navbar .dropdown-menu {
@@ -296,6 +304,12 @@ h1 {
   text-align: center;
 }
 
+.img-fluid-1 {
+  background-size:auto;
+  background-repeat: no-repeat;
+  height: 719px;
+}
+
 #hot .product-slider {
   clear: both;
   margin-bottom: 20px;
@@ -379,7 +393,7 @@ h1 {
 
 .box.slideshow .owl-dots, #main-slider .owl-dots {
   position: absolute;
-  right: 20px;
+  right: 42%;
   bottom: 10px;
 }
 
@@ -1122,7 +1136,7 @@ h1 {
 }
 
 #content #blog-post .comment .reply {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #content #blog-post .comment.last {
@@ -1385,7 +1399,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-link:hover {
-  color: #348e7b;
+  color: #fa8f03;
   text-decoration: underline;
 }
 
@@ -1405,8 +1419,8 @@ STYLE SWITCHER FOR DEMO
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #3eaa94;
-  border-color: #3aa18c;
+  background-color: #242424;
+  border-color: #fff;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -1722,16 +1736,16 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-outline-secondary {
-  color: #6c757d;
+  color: #fa8f03;
   background-color: transparent;
   background-image: none;
-  border-color: #6c757d;
+  border-color: #fa8f03;
 }
 
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #242424;
+  border-color: #242424;
 }
 
 .btn-outline-secondary:focus, .btn-outline-secondary.focus {
@@ -1991,7 +2005,7 @@ STYLE SWITCHER FOR DEMO
  * 3. TYPE
  */
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
