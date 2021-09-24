@@ -365,6 +365,7 @@ h1 {
 
 #advantages .box h3 a:hover {
   text-decoration: none;
+  color:#242424;
 }
 
 #advantages .box p {
@@ -415,8 +416,14 @@ h1 {
 }
 
 #footer ul a {
-  color: #999;
+  color: #fa8f03;
 }
+
+#footer ul a:hover {
+  color: #242424;
+  text-decoration: none;
+}
+
 
 #footer .social {
   text-align: left;
