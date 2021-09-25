@@ -6,7 +6,6 @@
     <title>Prime Time Shopper</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -446,20 +445,20 @@
           </div>
           <!-- /.col-lg-3-->
           <div class="col-lg-3 col-md-6">
-            <h4 class="mb-3">Where to find us</h4>
+            <h4 class="mb-3">Reach Us</h4>
             <p>
                     <strong>Prime Time Shopper</strong>
                     <br>Surat, Gujarat, India
-                    <br><i class="fa fa-envelope"></i> contactus@pts.com
-                    <br><i class="fa fa-envelope"></i> info@pts.com
-                    <br><i class="fa fa-phone"></i> +91-0130401012
+                    <br><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i> contactus@pts.com</a>
+                    <br><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i> info@pts.com</a>
+                    <br><a href="tel:+910130401012"><i class="fa fa-phone"></i> +91-0130401012</a>
             </p>
             <hr class="d-block d-md-none">
           </div>
           <!-- /.col-lg-3-->
           <div class="col-lg-3 col-md-6">
-            <h4 class="mb-3">Get the news</h4>
-            <p class="text-muted">Subscribe here to get latest deals and offers on Prime Time Shopper</p>
+            <h4 class="mb-3">News Buzz</h4>
+            <p>Subscribe here to get latest deals and offers on Prime Time Shopper</p>
             <form action="" method="post">
               <div class="input-group">
                 <input type="text" name="email" class="form-control" required><span class="input-group-append">
@@ -468,8 +467,8 @@
               <!-- /input-group-->
             </form>
             <hr>
-            <h4 class="mb-3">Stay in touch</h4>
-            <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
+            <h4 class="mb-3">Follow Us</h4>
+            <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i></a></p>
           </div>
           <!-- /.col-lg-3-->
         </div>
