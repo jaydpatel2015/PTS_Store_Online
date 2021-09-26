@@ -228,7 +228,7 @@
                   <hr>
                   <form action="details.php" method="post">
                     <div class="form-group d-flex justify-content-between">
-                      <label for="col-md-6" class="form-label"><strong>Product Quantity</strong></label>
+                      <label for="col-md-6" class="form-label"><strong>Quantity</strong></label>
                       <select name="product_qty" style="max-width:175px;" class="form-control">
                         <option value="">Select Quantity</option>
                         <?php for ($i = 1; $i <= 10; $i++) { ?>
@@ -237,7 +237,7 @@
                       </select>
                     </div>
                     <div class="form-group d-flex justify-content-between">
-                      <label for="col-md-6" class="form-label"><strong>Product Size</strong></label>
+                      <label for="col-md-6" class="form-label"><strong>Size</strong></label>
                       <select name="product_size" style="max-width:175px;" class="form-control">
                         <option value="">Select Size</option>
                         <option value="S">S</option>
@@ -302,10 +302,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
@@ -317,10 +317,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
@@ -332,10 +332,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
@@ -354,10 +354,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
@@ -369,10 +369,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
@@ -384,10 +384,10 @@
                   <div class="product same-height">
                     <div class="flip-container">
                       <div class="flipper">
-                        <div class="front"><a href="detail.html"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="detail.html"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
+                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
                       </div>
-                    </div><a href="detail.html" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
+                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
                     <div class="text">
                       <h3>Fur coat</h3>
                       <p class="price">&#8377;750</p>
