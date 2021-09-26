@@ -150,7 +150,7 @@
                     </div>
                   </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
                   <div class="text">
-                    <h  3><a href="details.php">White Blouse Armani</a></h3>
+                    <h3><a href="details.php">White Blouse Armani</a></h3>
                     <p class="price">
                       <del>&#8377;950</del>&#8377;750
                     </p>
