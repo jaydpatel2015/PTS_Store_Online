@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Prime Time Shopper</title>
-    <meta name="description" content="Prime Time Shopper, a multi-vendor E-commerce Platform Solution for B2B/B2C">
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
@@ -22,20 +22,23 @@
     <link rel="stylesheet" href="styles/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="./logo/primetime_icon.png">
-    <!-- Leaflet CSS - For the map-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
+</head>
 </head>
 
 <body>
     <!-- navbar-->
     <header class="header mb-5">
-        <!--*** TOPBAR ***-->
+        <!--
+      *** TOPBAR ***
+      _________________________________________________________
+      -->
         <div id="top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Welcome, Guest</a><a href="#" class="ml-1">Shopping Cart Total Price: &#8377;100, Total Items: 2</a></div>
                     <div class="col-lg-6 text-center text-lg-right">
                         <ul class="menu list-inline mb-0">
+                            <!-- <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
                             <li class="list-inline-item"><a href="customer_register.php">Register</a></li>
                             <li class="list-inline-item"><a href="customer/my_account.php">My Account</a></li>
                             <li class="list-inline-item"><a href="cart.php">Go To Cart</a></li>
@@ -59,7 +62,7 @@
                         <li class="nav-item"><a href="shop.php" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="customer/my_account.php" class="nav-link">My Account</a></li>
                         <li class="nav-item"><a href="cart.php" class="nav-link">Shopping Cart</a></li>
-                        <li class="nav-item"><a href="contact.php" class="nav-link active">Contact us</a></li>
+                        <li class="nav-item"><a href="contact.php" class="nav-link">Contact us</a></li>
                     </ul>
                     <div class="navbar-buttons d-flex justify-content-end">
                         <!-- /.nav-collapse-->
@@ -91,102 +94,104 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Contact</li>
+                                <li aria-current="page" class="breadcrumb-item active">Register / Sign-in</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-12">
-                        <div id="contact" class="box">
-                            <h1>Contact</h1>
-                            <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
-                            <p>Please feel free to contact us, our customer service center is working for you 24/7.</p>
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <h1>New account</h1>
+                            <p class="lead">Not our registered customer yet?</p>
+                            <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+                            <p class="text-muted">If you have any questions, please feel free to <a href="contact.php">contact us</a>, our customer service center is working for you 24/7.</p>
                             <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h3><i class="fa fa-map-marker"></i>Address</h3>
-                                    <p> <strong>Prime Time Shopper</strong><br>Surat,Gujarat<br>395007<br>India</p>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input id="name" type="text" name='c_name' class="form-control" required>
                                 </div>
-                                <!-- /.col-sm-4-->
-                                <div class="col-md-4">
-                                    <h3><i class="fa fa-phone"></i> Call center</h3>
-                                    <p class="text-muted">This number is toll free if calling within India otherwise we advise you to use the electronic form of communication.</p>
-                                    <p><strong>+91-0130401012</strong></p>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" name='c_email' class="form-control" required>
                                 </div>
-                                <!-- /.col-sm-4-->
-                                <div class="col-md-4">
-                                    <h3><i class="fa fa-envelope"></i> Electronic support</h3>
-                                    <p class="text-muted">Please feel free to share your thoughts, we would love to hear from you</p>
-                                    <strong><a href="mailto:">contactus@pts.com</a></strong>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="password" name='c_password' class="form-control" required>
                                 </div>
-                                <!-- /.col-sm-4-->
-                            </div>
-                            <!-- /.row-->
-                            <hr>
-                            <div id="map"></div>
-                            <hr>
-                            <h2>Contact form</h2>
-                            <form method='post' action=''>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="firstname">Firstname</label>
-                                            <input id="firstname" type="text" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="lastname">Lastname</label>
-                                            <input id="lastname" type="text" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input id="email" type="text" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="subject">Subject</label>
-                                            <input id="subject" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="message">Message</label>
-                                            <textarea id="message" class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 text-center">
-                                        <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send message</button>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="password">Reconfirm Password</label>
+                                    <input id="password" type="password" name='r_c_password' class="form-control">
                                 </div>
-                                <!-- /.row-->
+                                <div class="form-group">
+                                    <label for="password">Country</label>
+                                    <input id="country" name='c_country' type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input id="state" name='c_state' type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input id="state" name='c_city' type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">address</label>
+                                    <input id="address" name='c_address' type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Profile Pic</label>
+                                    <input id="profile_pic" name='c_img' type="file" class="form-control">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" name='register' class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
+                                </div>
                             </form>
                         </div>
                     </div>
-                    <!-- /.col-md-9-->
+                    <div class="col-lg-6">
+                        <div class="box">
+                            <h1>Login</h1>
+                            <p class="lead">Already our customer?</p>
+                            <hr>
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" name="email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input id="password" type="password" name="password" class="form-control">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" name="login" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- *** FOOTER *** -->
+    <!--
+    *** FOOTER ***
+    _________________________________________________________
+    -->
     <div id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="mb-3">Pages</h4>
                     <ul class="list-unstyled">
-                        <li><a href="cart.php">Shopping Cart</a></li>
-                        <li><a href="contact.php">Contact Us</a></li>
-                        <li><a href="shop.php">Shop</a></li>
-                        <li><a href="customer/my_account.php">My Account</a></li>
+                        <li><a href="text.html">About us</a></li>
+                        <li><a href="text.html">Terms and conditions</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
                     </ul>
                     <hr>
                     <h4 class="mb-3">User section</h4>
                     <ul class="list-unstyled">
-                        <li><a href="customer/my_account.php">Login</a></li>
-                        <li><a href="customer_register.php">Register</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                        <li><a href="register.html">Regiter</a></li>
                     </ul>
                 </div>
                 <!-- /.col-lg-3-->
@@ -194,44 +199,38 @@
                     <h4 class="mb-3">Top categories</h4>
                     <h5>Men</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">T-shirts</a></li>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li><a href="category.html">T-shirts</a></li>
+                        <li><a href="category.html">Shirts</a></li>
+                        <li><a href="category.html">Accessories</a></li>
                     </ul>
-                    <h5>Women</h5>
+                    <h5>Ladies</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">T-shirts</a></li>
-                        <li><a href="#">Skirts</a></li>
-                        <li><a href="#">Pants</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li><a href="category.html">T-shirts</a></li>
+                        <li><a href="category.html">Skirts</a></li>
+                        <li><a href="category.html">Pants</a></li>
+                        <li><a href="category.html">Accessories</a></li>
                     </ul>
                 </div>
                 <!-- /.col-lg-3-->
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="mb-3">Reach Us</h4>
-                    <p>
-                        <strong>Prime Time Shopper</strong>
-                        <br>Surat, Gujarat, India
-                        <br><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i> contactus@pts.com</a>
-                        <br><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i> info@pts.com</a>
-                        <br><a href="tel:+910130401012"><i class="fa fa-phone"></i> +91-0130401012</a>
-                    </p>
+                    <h4 class="mb-3">Where to find us</h4>
+                    <p><strong>Obaju Ltd.</strong><br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p><a href="contact.html">Go to contact page</a>
                     <hr class="d-block d-md-none">
                 </div>
                 <!-- /.col-lg-3-->
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="mb-3">News Buzz</h4>
-                    <p>Subscribe here to get latest deals and offers on Prime Time Shopper</p>
-                    <form action="" method="post">
+                    <h4 class="mb-3">Get the news</h4>
+                    <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <form>
                         <div class="input-group">
-                            <input type="text" name="email" class="form-control" required><span class="input-group-append">
-                                <button type="submit" name="" class="btn btn-outline-secondary">Subscribe!</button></span>
+                            <input type="text" class="form-control"><span class="input-group-append">
+                                <button type="button" class="btn btn-outline-secondary">Subscribe!</button></span>
                         </div>
                         <!-- /input-group-->
                     </form>
                     <hr>
-                    <h4 class="mb-3">Follow Us</h4>
-                    <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="mailto:someone@example.com" class="email external"><i class="fa fa-envelope"></i></a></p>
+                    <h4 class="mb-3">Stay in touch</h4>
+                    <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
                 </div>
                 <!-- /.col-lg-3-->
             </div>
@@ -254,8 +253,6 @@
     <script src="styles/owl.carousel/owl.carousel.min.js"></script>
     <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="js/front.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"> </script>
-    <script src="js/map.js"></script>
 </body>
 
 </html>

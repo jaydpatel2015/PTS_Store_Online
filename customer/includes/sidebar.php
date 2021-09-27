@@ -1,19 +1,21 @@
-<!-- My Account Sidebar starts here -->
-<div class="col-md-3 mb-3 text-center">
-    <div class="card">
-        <img class="card-img-top" id="sideBarImg" src="../customer/cust_img/286_180_people.jpg" alt="Card image cap" class="img-responsive">
-        <h5 class="card-header text-center">Jay Patel</h5>
-        <div class="card-body text-left">
-            <ul class="list-group">
-                <li class="list-group-item <?= (isset($_GET['my_orders']))? "bg-dark active" :"" ?>"><i class="bi bi-handbag-fill"></i>&nbsp;<a href="my_account.php?my_orders">My Order</a></li>
-                <li class="list-group-item <?= (isset($_GET['my_addresses']))? "bg-dark active" :"" ?>"><i class="bi bi-geo-alt-fill"></i>&nbsp;<a href="my_account.php?my_addresses">My Addresses</a></li>
-                <li class="list-group-item <?= (isset($_GET['edit_account']))? "bg-dark active" :"" ?>"><i class="bi bi-people-fill"></i>&nbsp;<a href="my_account.php?edit_account">Edit Account</a></li>
-                <li class="list-group-item <?= (isset($_GET['change_password']))? "bg-dark active" :"" ?>"><i class="bi bi-key-fill"></i>&nbsp;<a href="my_account.php?change_password">Change Password</a></li>
-                <li class="list-group-item <?= (isset($_GET['wish_list']))? "bg-dark active" :"" ?>"><i class="bi bi-suit-heart-fill"></i>&nbsp;<a href="my_account.php?wish_list">My Wish List</a></li>
-                <li class="list-group-item <?= (isset($_GET['delete_account']))? "bg-dark active" :"" ?>"><i class="bi bi-file-excel-fill"></i>&nbsp;<a href="my_account.php?delete_account">Delete Account</a></li>
-                <li class="list-group-item <?= (isset($_GET['log_out']))? "bg-dark active" :"" ?>"><i class="bi bi-door-open-fill"></i>&nbsp;<a href="my_account.php?log_out">Log Out</a></li>
-            </ul>
+<div class="col-lg-3">
+    <!--*** CUSTOMER MENU *** -->
+    <div class="card sidebar-menu mb-2">
+        <div class="card-header">
+            <h3 class="h4 card-title">Hello, Jay Patel</h3>
+        </div>
+        <img class="card-img-top" src="..." alt="Account Profile Pic">
+    </div>
+
+    <div class="card sidebar-menu">
+        <div class="card-body">
+            <ul class="nav nav-pills flex-column">
+                <a href="my_account.php?my_orders" class="nav-link <?php if(isset($_GET['my_orders'])){echo "active";} ?>"><i class="fa fa-list"></i> My orders</a>
+                <a href="#" class="nav-link <?php if(isset($_GET[''])){echo "active";} ?>"><i class="fa fa-heart"></i> My wishlist</a>
+                <a href="#" class="nav-link"><i class="fa fa-user"></i> My account</a>
+                <a href="../index.php" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></ul>
         </div>
     </div>
+    <!-- /.col-lg-3-->
+    <!-- *** CUSTOMER MENU END ***-->
 </div>
-<!-- My Account Sidebar Ends here -->

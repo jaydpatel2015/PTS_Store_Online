@@ -35,9 +35,9 @@
           <div class="col-lg-6 text-center text-lg-right">
             <ul class="menu list-inline mb-0">
               <li class="list-inline-item"><a href="customer_register.php">Register</a></li>
-              <li class="list-inline-item"><a href="checkout.php">My Account</a></li>
+              <li class="list-inline-item"><a href="customer/my_account.php">My Account</a></li>
               <li class="list-inline-item"><a href="cart.php">Go To Cart</a></li>
-              <li class="list-inline-item"><a href="checkout.php">Login</a></li>
+              <li class="list-inline-item"><a href="customer/my_account.php">Login</a></li>
             </ul>
           </div>
         </div>
@@ -55,7 +55,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="shop.php" class="nav-link">Shop</a></li>
-            <li class="nav-item"><a href="checkout.php" class="nav-link">My Account</a></li>
+            <li class="nav-item"><a href="customer/my_account.php" class="nav-link">My Account</a></li>
             <li class="nav-item"><a href="cart.php" class="nav-link active">Shopping Cart</a></li>
             <li class="nav-item"><a href="contact.php" class="nav-link">Contact us</a></li>
           </ul>
@@ -150,7 +150,7 @@
                   <div class="left"><a href="index.php" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
                   <div class="right">
                     <button class="btn btn-outline-secondary" type='submit' name='update'><i class="fa fa-refresh"></i> Update cart</button>
-                    <a href='checkout.php' class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+                    <a href='customer/my_account.php' class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
                   </div>
                 </div>
               </form>
@@ -268,12 +268,12 @@
             <li><a href="cart.php">Shopping Cart</a></li>
             <li><a href="contact.php">Contact Us</a></li>
             <li><a href="shop.php">Shop</a></li>
-            <li><a href="checkout.php">My Account</a></li>
+            <li><a href="customer/my_account.php">My Account</a></li>
           </ul>
           <hr>
           <h4 class="mb-3">User section</h4>
           <ul class="list-unstyled">
-            <li><a href="checkout.php">Login</a></li>
+            <li><a href="customer/my_account.php">Login</a></li>
             <li><a href="customer_register.php">Register</a></li>
           </ul>
         </div>
