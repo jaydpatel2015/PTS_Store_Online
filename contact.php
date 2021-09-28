@@ -110,6 +110,7 @@
                                 <div class="col-md-4">
                                     <h3><i class="fa fa-phone"></i> Call center</h3>
                                     <p class="text-muted">This number is toll free if calling within India otherwise we advise you to use the electronic form of communication.</p>
+                                    <strong class="text-danger">24 X 7 Support</strong>
                                     <p><strong>+91-0130401012</strong></p>
                                 </div>
                                 <!-- /.col-sm-4-->
@@ -117,6 +118,35 @@
                                     <h3><i class="fa fa-envelope"></i> Electronic support</h3>
                                     <p class="text-muted">Please feel free to share your thoughts, we would love to hear from you</p>
                                     <strong><a href="mailto:">contactus@pts.com</a></strong>
+                                </div>
+                                <!-- /.col-sm-4-->
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <!-- /.col-sm-4-->
+                                <div class="col-md-4 mb-2">
+                                    <h3><i class="fa fa-university"></i> Bank Details</h3>
+                                    <strong>HDFC Bank, LTD</strong><br>
+                                    <strong>Branch: Ghoddod Road, Surat, Gujarat</strong><br>
+                                    <strong>IFSC/NEFT:HDFC01777</strong>
+                                </div>
+                                <!-- /.col-sm-4-->
+
+                                <!-- /.col-sm-4-->
+                                <div class="col-md-4 mb-2">
+                                    <h3><i class="fa fa-university"></i> Bank Details</h3>
+                                    <strong>Axis Bank, LTD</strong><br>
+                                    <strong>Branch: Ghoddod Road, Surat, Gujarat</strong><br>
+                                    <strong>IFSC/NEFT:AXIS01234</strong>
+                                </div>
+                                <!-- /.col-sm-4-->
+
+                                <!-- /.col-sm-4-->
+                                <div class="col-md-4 mb-2">
+                                    <h3><i class="fa fa-university"></i> Bank Details</h3>
+                                    <strong>Yes Bank LTD</strong><br>
+                                    <strong>Branch: Ghoddod Road, Surat, Gujarat</strong><br>
+                                    <strong>IFSC/NEFT:YES0017777</strong>
                                 </div>
                                 <!-- /.col-sm-4-->
                             </div>

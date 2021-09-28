@@ -94,7 +94,7 @@
                         </nav>
                     </div>
                     <!-- Customer Sidebar -->
-                        <?php include('includes/sidebar.php'); ?>
+                    <?php include('includes/sidebar.php'); ?>
                     <!-- Customer Sidebar -->
 
                     <!-- my orders page begins-->
@@ -103,10 +103,24 @@
                     } ?>
                     <!-- my orders page ends -->
 
-                    
-                    <?php if (isset($_GET[''])) { ?>
+                    <!-- Edit page begins-->
+                    <?php if (isset($_GET['edit_account'])) {
+                        include('edit_account.php');
+                    } ?>
+                    <!-- Edit page ends -->
 
-                    <?php } ?>
+                    <!-- change password page begins-->
+                    <?php if (isset($_GET['change_password'])) {
+                        include('change_password.php');
+                    } ?>
+                    <!-- change password page ends -->
+
+                    <!-- delete account page begins-->
+                    <?php if (isset($_GET['delete_account'])) {
+                        include('delete_account.php');
+                    } ?>
+                    <!-- delete account page ends -->
+
                 </div>
             </div>
         </div>
