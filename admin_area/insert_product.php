@@ -34,10 +34,12 @@ if(isset($_POST['insert_new'])){
         </button>
       </div>";
     }else{ 
-        echo "<div class='alert alert-danger' role='alert'>
-                    <h1>Error ! Kindly Try again</h1>;
-                </div>";
         echo "<script>location.href('insert_product.php','_self');</script>";
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+        <strong>oh no no!</strong> You should check in on some of those fields below.
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>&times;</span>
+        </button>";
     }
 }
 
