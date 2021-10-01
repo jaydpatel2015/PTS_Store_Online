@@ -167,10 +167,10 @@ include('./functions/functions.php');
           </div>
         </div>
         <!-- container -->
-        <div class="container">
-          <div class="col-md-8 col-sm-6 d-flex justify-content-between">
-            <?php getPro();?>  
-          </div>
+        <div class="container">        
+              <div class="col-md-8 col-sm-4 single d-flex">
+                  <?php getPro();?>  
+              </div>
         </div>
         <!-- /.container-->
       <div class="container">
@@ -210,18 +210,18 @@ include('./functions/functions.php');
             <!-- /.col-lg-3-->
             <div class="col-lg-3 col-md-6">
               <h4 class="mb-3">Top categories</h4>
-              <h5>Men</h5>
               <ul class="list-unstyled">
-                <li><a href="#">T-shirts</a></li>
-                <li><a href="#">Shirts</a></li>
-                <li><a href="#">Accessories</a></li>
-              </ul>
-              <h5>Women</h5>
-              <ul class="list-unstyled">
-                <li><a href="#">T-shirts</a></li>
-                <li><a href="#">Skirts</a></li>
-                <li><a href="#">Pants</a></li>
-                <li><a href="#">Accessories</a></li>
+              <?php 
+                $p_get_cats="SELECT * FROM product_categories";
+                $run_p_cats=mysqli_query($con,$p_get_cats);
+                while($res_p_cats=mysqli_fetch_array($run_p_cats)){
+                    $p_cat_id=$res_p_cats['p_cat_id'];
+                    $p_cat_title=$res_p_cats['p_cat_title'];
+                    echo "
+                    <li><a href='shop.php?p_cat=$p_cat_id'>$p_cat_title</a></li>
+                    ";
+                }
+              ?>
               </ul>
             </div>
             <!-- /.col-lg-3-->

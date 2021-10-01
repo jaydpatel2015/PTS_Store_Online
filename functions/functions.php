@@ -13,9 +13,8 @@ function getPro()
         $pro_title = $row_product['product_title'];
         $pro_price = $row_product['product_price'];
         $pro_img1 = $row_product['product_img1'];
-        echo 
-        "
-        <div class='col-md-4 col-sm-12'> 
+        echo
+        "<div class='col-md-4 col-sm-12 d-flex justify-content-center'>
             <div class='product'>
                     <div class='card'>
                             <a href='details.php?pro_id=$pro_id'><img height='200' width='100%' class='img-responsive' src='admin_area/admin_product_images/$pro_img1'></a>
@@ -30,9 +29,9 @@ function getPro()
                             </div>
                         </div>
                 </div>
+                </div>
             </div>
-        </div>
-            ";
+   ";
     }
 }
 
