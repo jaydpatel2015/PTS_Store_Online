@@ -1,44 +1,38 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'pts');
+$db = mysqli_connect('localhost', 'root', '', 'pts_store');
 
 // Retrieve Products in sidebar
 function getPro()
 {
     global $db;
-    $get_products = "select * from products order by product_id LIMIT 0,4";
+    $get_products = "select * from products order by 1 DESC LIMIT 0,8";
     $run_products = mysqli_query($db, $get_products);
     while ($row_product = mysqli_fetch_array($run_products)) {
-        $product_id = $row_product['product_id'];
-        $product_title = $row_product['product_title'];
-        $product_price = $row_product['product_price'];
-        $product_img = $row_product['product_img'];
-        echo "<div class='product-slider owl-carousel owl-theme'>
-                <div class='item'>
-                    <div class='product'>
-                        <div class='flip-container'>
-                            <div class='flipper'>
-                                <div class='front'><a href='details.php'><img src='admin_area/admin_product_images/product3.jpg' class='img-fluid'></a></div>
-                                <div class='back'><a href='details.php'><img src='admin_area/admin_product_images/product3_2.jpg' class='img-fluid'></a></div>
-                            </div>
-                        </div><a href='details.php' class='invisible'><img src='admin_area/admin_product_images/product3.jpg' class='img-fluid'></a>
-                        <div class='text'>
-                            <h3><a href='details.php'>Black Blouse Versace</a></h3>
-                            <p class='price'>
-                                <del></del>&#8377;750.00
+        $pro_id = $row_product['product_id'];
+        $pro_title = $row_product['product_title'];
+        $pro_price = $row_product['product_price'];
+        $pro_img1 = $row_product['product_img1'];
+        echo 
+        "
+        <div class='col-md-4 col-sm-12'> 
+            <div class='product'>
+                    <div class='card'>
+                            <a href='details.php?pro_id=$pro_id'><img height='200' width='100%' class='img-responsive' src='admin_area/admin_product_images/$pro_img1'></a>
+                        <div class='card-body text-center'>
+                            <h4><a href='details.php?pro_id=$pro_id'>$pro_title</a></h4>
+                            <p class='price'> 
+                                <del></del>&#8377;$pro_price
                             </p>
+                            <div class='d-flex'>
+                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-binoculars'></i> View details </a>
+                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-shopping-cart'></i> Add to Cart </a>
+                            </div>
                         </div>
-                        <!-- /.text-->
-                        <div class='d-flex justify-content-between align-items-center p-1'>
-                            <a href='details.php' class='btn btn-primary btn-sm'><i class='fa fa-search'></i>View Details</a>
-                            <a href='cart.php' class='btn btn-primary btn-sm'><i class='fa fa-shopping-cart'></i> Add to Cart</a>
-                        </div>
-                    </div>
-                    <!-- /.product-->
-                    </div>
-                    <!-- /.product-slider-->
                 </div>
-            </div>";
+            </div>
+        </div>
+            ";
     }
 }
 

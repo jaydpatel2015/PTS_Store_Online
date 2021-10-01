@@ -1,5 +1,6 @@
 <?php
 include('includes/db_config.php');
+include('./functions/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +98,6 @@ include('includes/db_config.php');
               <?php
               $get_images = "select * from slider";
               $run_slides = mysqli_query($con, $get_images);
-              $off_slides = mysqli_num_rows($run_slides);
               while ($row_slides = mysqli_fetch_array($run_slides)) {
                 $slider_name = $row_slides['slider_name'];
                 $slider_image = $row_slides['slider_image'];
@@ -166,11 +166,13 @@ include('includes/db_config.php');
             </div>
           </div>
         </div>
+        <!-- container -->
         <div class="container">
+          <div class="col-md-8 col-sm-6 d-flex justify-content-between">
             <?php getPro();?>  
-        <!-- /.container-->
+          </div>
         </div>
-        <!--*** GET INSPIRED ***-->
+        <!-- /.container-->
       <div class="container">
         <div class="col-md-12">
           <div class="box slideshow">
