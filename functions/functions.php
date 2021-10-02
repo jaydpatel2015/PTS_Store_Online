@@ -63,43 +63,43 @@ function getCat()
 function getProdCatAfterFilter()
 {
     global $db;
-    if (isset($_GET['prod_cat_id'])) {
-        $p_cat_id = $_GET['prod_cat_id'];
-        $get_p_cat = "SELECT * FROM product_categories WHERE product_category_id='$p_cat_id'";
+    if (isset($_GET['p_cat'])) {
+        $p_cat_id = $_GET['p_cat'];
+        $get_p_cat = "SELECT * FROM product_categories WHERE p_cat_id='$p_cat_id'";
         $run_p_cat = mysqli_query($db, $get_p_cat);
         $row_p_cat = mysqli_fetch_array($run_p_cat);
-        $p_cat_title = $row_p_cat['product_category_title'];
-        $p_cat_desc = $row_p_cat['product_category_desc'];
+        $p_cat_title = $row_p_cat['p_cat_title'];
+        $p_cat_desc = $row_p_cat['p_cat_desc'];
 
-        $get_pro = "SELECT * FROM products WHERE product_category_id='$p_cat_id'";
+        $get_pro = "SELECT * FROM products WHERE p_cat_id='$p_cat_id'";
         $run_pro_query = mysqli_query($db, $get_pro);
         $count_pro = mysqli_num_rows($run_pro_query);
         if ($count_pro == 0) {
-            echo "<div class='col-md-12 col-sm-6'>
-                <div class='card'>
-                    <h1 class='card-heading text-center'>No Results Found in " . $p_cat_title . " Category</h1>
-                </div>                        
-            </div>";
-        } else {
-            echo "<div class='col-md-12 col-sm-6'>
-                    <div class='card'>
-                        <h5 class='card-title text-center p-2'>$p_cat_title</h5>
-                        <p class='card-subctitle mb-2 text-muted text-left p-2'>$p_cat_desc</p>
+            echo "<div class='col-lg-12'>
+                    <div class='box'>
+                            <h1 class='text-center'>No Results Found in " . $p_cat_title . " Category</h1>
                     </div>                        
-            </div>";
+                </div>";
+        } else {
+            echo "<div class='col-lg-12'>
+                    <div class='box'>
+                        <h1 class='text-left'>$p_cat_title</h1>
+                        <p class='text-muted text-left'>$p_cat_desc</p>
+                    </div>                        
+                </div>";
         }
         while ($row_products = mysqli_fetch_array($run_pro_query)) {
             $pro_id = $row_products['product_id'];
             $pro_title = $row_products['product_title'];
             $pro_price = $row_products['product_price'];
-            $pro_img = $row_products['product_img'];
+            $pro_img1 = $row_products['product_img1'];
             echo "<div class='col-md-4 col-sm-6 mt-2'>
                   <div class='card text-center mb-1'>
                     <div class='card-heading p-1'>
-                        <a href='details.php?product_id=$pro_id'><img class='card-img-top' src='admin_area/admin_product_images/$pro_img' alt='men's t-shirts'></a>
+                        <a href='details.php?product_id=$pro_id'><img class='card-img-top' src='admin_area/admin_product_images/$pro_img1' alt='men's t-shirts'></a>
                     </div>
                     <div class='card-body'> 
-                        <h5 class='card-title'><a href='details.php?product_id=$pro_id'>$pro_title</a></h5>
+                        <h4 class='card-title'><a href='details.php?product_id=$pro_id'>$pro_title</a></h4>
                         <p class='card-text'><strong>&#8377;</strong>$pro_price</p>
                         <a href='details.php?prod_id=$pro_id' class='btn btn-primary mb-1'><i class='bi bi-info-circle'></i> View Details</a>
                         <a href='details.php?prod_id=$pro_id' class='btn btn-success'><i class='bi bi-cart-plus'></i> Add to Cart</a>

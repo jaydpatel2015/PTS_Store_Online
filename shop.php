@@ -1,6 +1,6 @@
 <?php
 include('includes/db_config.php');
-include('./functions/functions.php');
+include('functions/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -94,16 +94,14 @@ include('./functions/functions.php');
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li aria-current="page" class="breadcrumb-item active">Women</li>
+                <li aria-current="page" class="breadcrumb-item active">Shop</li>
               </ol>
             </nav>
           </div>
           <div class="col-lg-3">
-
             <!-- Sidebar Starts -->
             <?php include('includes/sidebar.php'); ?>
             <!-- Sidebar Ends -->
-
 
             <div class="col-lg-9">
               <?php if (!isset($_GET['p_cat'])) {
@@ -114,7 +112,8 @@ include('./functions/functions.php');
                   </div>
               <?php }
               } ?>
-              <div class="row products">
+                <div class="row products">
+                  <?php getProdCatAfterFilter(); ?>
                     <?php if (!isset($_GET['p_cat'])) {
                       if (!isset($_GET['cat'])) {
                         $per_page = 3;
@@ -152,21 +151,20 @@ include('./functions/functions.php');
                   <!-- /.product-->
                 <!-- </div> -->
                 <!-- /.products-->
-              </div>
               <div class="pages">
                 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                   <ul class="pagination">
-                            <?php 
+                      <?php 
                             $query="SELECT * FROM products";
                             $result=mysqli_query($con,$query);
                             $total_records=mysqli_num_rows($result);
                             $total_per_page=ceil($total_records/$per_page);
-                            echo "<li class='page-item'><a href='shop.php?page=1' aria-label='Previous' class='page-link'><span aria-hidden='true'>«</span><span class='sr-only'>Previous</span></a></li>";
+                            echo "<li class='page-item'><a href='shop.php?page=1' aria-label='Previous' class='page-link'><span aria-hidden='true'>First</span><span class='sr-only'>Previous</span></a></li>";
                             for($i=1;$i<$total_per_page;$i++){
-                              echo "<li class='page-item'><a href='shop.php?page=$i' class='page-link'><span aria-hidden='true'></span><span class='sr-only'></span>$i</a></li>";
+                              echo "<li class='page-item'><a href='shop.php?page=$i' class='page-link'><span aria-hidden='true'>$i</span><span class='sr-only'></span></a></li>";
                             }
-                            echo "<li class='page-item'><a href='shop.php?page=$total_per_page' aria-label='Last' class='page-link'><span aria-hidden='true'>»</span><span class='sr-only'>Next</span></a></li>";
-                            ?>
+                            echo "<li class='page-item'><a href='shop.php?page=$total_per_page' aria-label='Last' class='page-link'><span aria-hidden='true'>Last Page</span><span class='sr-only'>Next</span></a></li>";
+                      ?>
                   </ul>
                 </nav>
               </div>
@@ -175,6 +173,7 @@ include('./functions/functions.php');
             </div>
             <!-- /.col-lg-9-->
           </div>
+  
         </div>
       </div>
     </div>
