@@ -1,36 +1,40 @@
-<div class="card sidebar-menu mb-4">
-    <div class="card-header">
-        <h3 class="h4 card-title">Categories</h3>
+    <!-- product categories starts here -->
+    <div class="card sidebar-menu mb-4">
+        <div class="card-header">
+            <h3 class="h4 card-title">Product Categories</h3>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-pills flex-column category-menu">
+                <li>
+                    <ul class="list-unstyled">
+                        <?php gePcats(); ?>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="card-body">
-        <ul class="nav nav-pills flex-column category-menu">
-            <li><a href="shop.php" class="nav-link">Men <span class="badge badge-secondary">42</span></a>
-                <ul class="list-unstyled">
-                    <li><a href="shop.php" class="nav-link">T-shirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Shirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Pants</a></li>
-                    <li><a href="shop.php" class="nav-link">Accessories</a></li>
-                </ul>
-            </li>
-            <li><a href="shop.php" class="nav-link active">Women <span class="badge badge-light">123</span></a>
-                <ul class="list-unstyled">
-                    <li><a href="shop.php" class="nav-link">T-shirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Skirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Pants</a></li>
-                    <li><a href="shop.php" class="nav-link">Accessories</a></li>
-                  </ul>
-            </li>
-            <li><a href="shop.php" class="nav-link">Kids <span class="badge badge-secondary">11</span></a>
-                <ul class="list-unstyled">
-                    <li><a href="shop.php" class="nav-link">T-shirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Skirts</a></li>
-                    <li><a href="shop.php" class="nav-link">Pants</a></li>
-                    <li><a href="shop.php" class="nav-link">Accessories</a></li>
-                </ul>
-            </li>
-        </ul>
+    <!-- product categories ends here -->
+    <!-- categories starts -->
+    <div class="card sidebar-menu mb-4">
+        <div class="card-header">
+            <h3 class="h4 card-title">Categories</h3>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-pills flex-column category-menu">
+                <li>
+                    <ul class="list-unstyled">
+                        <?php getCat(); ?>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
+    <!-- categories ends here -->
 </div>
+<!-- container ends here -->
+
+
+<!-- 
 <div class="card sidebar-menu mb-4">
     <div class="card-header">
         <h3 class="h4 card-title">Brands <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
@@ -99,7 +103,6 @@
             <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
         </form>
     </div>
-</div>
+</div> -->
 <!-- *** MENUS AND FILTERS END ***-->
-<div class="banner"><a href="#"><img src="admin_area/admin_product_images/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
-</div>
+<!-- <div class="banner"><a href="#"><img src="admin_area/admin_product_images/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>-->

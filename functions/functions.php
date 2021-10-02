@@ -36,15 +36,15 @@ function getPro()
 }
 
 // Retrieve Product Categories in sidebar
-function get_prod_cat()
+function gePcats()
 {
     global $db;
-    $get_pcats = "SELECT * FROM product_categories";
-    $run_pcats_query = mysqli_query($db, $get_pcats);
-    while ($row_pcat = mysqli_fetch_array($run_pcats_query)) {
-        $p_cat_id = $row_pcat['product_category_id'];
-        $p_cat_title = $row_pcat['product_category_title'];
-        echo "<li class='list-group-item'><a href='shop.php?prod_cat_id=$p_cat_id'>$p_cat_title</a></li>";
+    $get_p_cats = "SELECT * FROM product_categories";
+    $run_p_cats = mysqli_query($db, $get_p_cats);
+    while ($row_p_cats = mysqli_fetch_array($run_p_cats)) {
+        $p_cat_id = $row_p_cats['p_cat_id'];
+        $p_cat_title = $row_p_cats['p_cat_title'];
+        echo "<li><a href='shop.php?p_cat=$p_cat_id'>$p_cat_title</a></li>";
     }
 }
 
@@ -55,13 +55,13 @@ function getCat()
     $get_cats = "SELECT * FROM categories";
     $run_cats_query = mysqli_query($db, $get_cats);
     while ($row_cat = mysqli_fetch_array($run_cats_query)) {
-        $p_cat_id = $row_cat['category_id'];
-        $p_cat_title = $row_cat['category_title'];
-        echo "<li class='list-group-item'><a href='shop.php?cat_id=$p_cat_id'>$p_cat_title</a></li>";
+        $p_cat_id = $row_cat['cat_id'];
+        $p_cat_title = $row_cat['cat_title'];
+        echo "<li><a href='shop.php?cat=$p_cat_id'>$p_cat_title</a></li>";
     }
 }
 
-// Retrieve Products after Filtering Product Categories
+// Retrieve Pro ducts after Filtering Product Categories
 function getProdCatAfterFilter()
 {
     global $db;
