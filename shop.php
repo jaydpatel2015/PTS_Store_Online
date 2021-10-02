@@ -117,7 +117,7 @@ include('./functions/functions.php');
               <div class="row products">
                     <?php if (!isset($_GET['p_cat'])) {
                       if (!isset($_GET['cat'])) {
-                        $per_page = 6;
+                        $per_page = 3;
                         if (isset($_GET['page'])) {
                           $page = $_GET['page'];
                         } else {
@@ -131,23 +131,21 @@ include('./functions/functions.php');
                           $pro_title = $res_products['product_title'];
                           $pro_price = $res_products['product_price'];
                           $pro_img1 = $res_products['product_img1'];
-                          echo "               
-                            <div class='col-lg-4 col-md-6 d-flex'>
+                          echo "<div class='col-lg-4 col-md-6 d-flex'>
                                 <div class='product'>
-                                      <div class='card text-center mb-2'>
+                                      <div class='card text-center'>
                                             <div class='card-header'>
-                                                <a href='details.php?pro_id=$pro_id'><img id='proImg' class='card-img-top' src='admin_area/admin_product_images/$pro_img1'/></a>
+                                                <a href='details.php?pro_id=$pro_id'><img id='proImg' class='card-img-top' src='admin_area/admin_product_images/$pro_img1'></a>
                                             </div>
                                             <div class='card-body'>
-                                                <h5 class='card-title'><a href='details.php?pro_id=$pro_id'>$pro_title</a></h5>
+                                                <h4 class='card-title'><a href='details.php?pro_id=$pro_id'>$pro_title</a></h4>
                                                 <p class='card-text'>&#8377; $pro_price</p>
-                                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='bi bi-info-circle'></i> View Details</a>
-                                                <a href='details.php?pro_id=$pro_id' class='btn btn-success btn-sm'><i class='bi bi-cart-plus'></i> Add to Cart</a>
+                                                 <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-search'></i>View Details</a>
+                                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-cart-plus'></i> Add to Cart</a>
                                             </div>
                                         </div>
                                 </div>
-                          </div>
-                                ";
+                          </div>";
                         }
                     ?>
                   <!-- </div> -->
@@ -158,13 +156,17 @@ include('./functions/functions.php');
               <div class="pages">
                 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
                   <ul class="pagination">
-                    <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                            <?php 
+                            $query="SELECT * FROM products";
+                            $result=mysqli_query($con,$query);
+                            $total_records=mysqli_num_rows($result);
+                            $total_per_page=ceil($total_records/$per_page);
+                            echo "<li class='page-item'><a href='shop.php?page=1' aria-label='Previous' class='page-link'><span aria-hidden='true'>«</span><span class='sr-only'>Previous</span></a></li>";
+                            for($i=1;$i<$total_per_page;$i++){
+                              echo "<li class='page-item'><a href='shop.php?page=$i' class='page-link'><span aria-hidden='true'></span><span class='sr-only'></span>$i</a></li>";
+                            }
+                            echo "<li class='page-item'><a href='shop.php?page=$total_per_page' aria-label='Last' class='page-link'><span aria-hidden='true'>»</span><span class='sr-only'>Next</span></a></li>";
+                            ?>
                   </ul>
                 </nav>
               </div>
