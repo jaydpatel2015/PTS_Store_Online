@@ -1,6 +1,6 @@
 <?php
 
-$db=mysqli_connect('localhost','root','','pts');
+$db=mysqli_connect('localhost','root','','pts_store');
 
 // Retrieve Products in sidebar
 function getPro(){
