@@ -167,10 +167,10 @@ include('./functions/functions.php');
           </div>
         </div>
         <!-- container -->
-        <div class="container">        
-              <div class="col-md-8 col-sm-4 single d-flex">
-                  <?php getPro();?>  
-              </div>
+        <div class="container">
+            <div class="row products">        
+              <?php getPro();?>  
+            </div>
         </div>
         <!-- /.container-->
       <div class="container">

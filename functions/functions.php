@@ -14,23 +14,21 @@ function getPro()
         $pro_price = $row_product['product_price'];
         $pro_img1 = $row_product['product_img1'];
         echo
-        "<div class='col-md-4 col-sm-12 d-flex justify-content-center'>
+        "<div class='col-lg-4 col-md-6 d-flex justify-content-between'>
             <div class='product'>
-                    <div class='card'>
-                            <a href='details.php?pro_id=$pro_id'><img height='200' width='100%' class='img-responsive' src='admin_area/admin_product_images/$pro_img1'></a>
-                        <div class='card-body text-center'>
-                            <h4><a href='details.php?pro_id=$pro_id'>$pro_title</a></h4>
-                            <p class='price'> 
-                                <del></del>&#8377;$pro_price
-                            </p>
-                            <div class='d-flex'>
-                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-binoculars'></i> View details </a>
-                                <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm'><i class='fa fa-shopping-cart'></i> Add to Cart </a>
-                            </div>
-                        </div>
-                </div>
+                <div class='card text-center mb-2'>
+                    <div class='card-header'>
+                        <a href='details.php?pro_id=$pro_id'><img id='proImg' class='card-img-top' src='admin_area/admin_product_images/$pro_img1'/></a>
+                    </div>
+                    <div class='card-body'>
+                        <h5 class='card-title'><a href='details.php?pro_id=$pro_id'>$pro_title</a></h5>
+                        <p class='card-text'>&#8377; $pro_price</p>
+                        <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='bi bi-info-circle'></i> View Details</a>
+                        <a href='details.php?pro_id=$pro_id' class='btn btn-success btn-sm'><i class='bi bi-cart-plus'></i> Add to Cart</a>
+                    </div>
                 </div>
             </div>
+        </div>
    ";
     }
 }
