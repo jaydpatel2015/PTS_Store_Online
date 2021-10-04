@@ -77,7 +77,7 @@ function getProdCatAfterFilter()
         if ($count_pro == 0) {
             echo "<div class='col-lg-12'>
                     <div class='box'>
-                            <h1 class='text-center'>No Results Found in " . $p_cat_title . " Category</h1>
+                            <h1 class='text-center'>No Products Found in " . $p_cat_title . " Category</h1>
                     </div>                        
                 </div>";
         } else {
@@ -100,9 +100,9 @@ function getProdCatAfterFilter()
                     </div>
                     <div class='card-body'> 
                         <h4 class='card-title'><a href='details.php?product_id=$pro_id'>$pro_title</a></h4>
-                        <p class='card-text'><strong>&#8377;</strong>$pro_price</p>
-                        <a href='details.php?prod_id=$pro_id' class='btn btn-primary mb-1'><i class='bi bi-info-circle'></i> View Details</a>
-                        <a href='details.php?prod_id=$pro_id' class='btn btn-success'><i class='bi bi-cart-plus'></i> Add to Cart</a>
+                        <h4 class='card-text'><strong>&#8377;</strong>$pro_price</h4>
+                        <a href='details.php?prod_id=$pro_id' class='btn btn-primary'><i class='bi bi-info-circle'></i> View Details</a>
+                        <a href='details.php?prod_id=$pro_id' class='btn btn-primary'><i class='bi bi-cart-plus'></i> Add to Cart</a>
                     </div>
                 </div>
             </div>";
