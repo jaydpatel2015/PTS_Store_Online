@@ -3,6 +3,32 @@ include('includes/db_config.php');
 include('./functions/functions.php');
 ?>
 
+<?php
+if (isset($_GET['pro_id'])) {
+  $product_id = $_GET['pro_id'];
+
+  $get_product = "select * from products where product_id='$product_id'";
+  $run_product_query = mysqli_query($con, $get_product);
+  $row_product = mysqli_fetch_array($run_product_query);
+  $p_cat_id = $row_product['p_cat_id'];
+  $pro_title = $row_product['product_title'];
+  $pro_price = $row_product['product_price'];
+  $pro_desc = $row_product['product_desc'];
+  $pro_img1 = $row_product['product_img1'];
+  $pro_img2 = $row_product['product_img2'];
+  $pro_img3 = $row_product['product_img3'];
+
+
+  $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
+  $run_p_cat_query = mysqli_query($con, $get_p_cat);
+  $row_p_cat = mysqli_fetch_array($run_p_cat_query);
+  $p_cat_title = $row_p_cat['p_cat_title'];
+  $p_cat_desc = $row_p_cat['p_cat_desc'];
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -94,331 +120,229 @@ include('./functions/functions.php');
             <!-- breadcrumb-->
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Ladies</a></li>
-                <li class="breadcrumb-item"><a href="#">Tops</a></li>
-                <li aria-current="page" class="breadcrumb-item active">White Blouse Armani</li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="shop.php">Shop</a></li>
+                <li class="breadcrumb-item"><a href="shop.php?p_cat=<?php echo $p_cat_id; ?>"><?php echo $p_cat_title; ?></a></li>
+                <li class="breadcrumb-item"><?php echo $pro_title; ?></li>
               </ol>
             </nav>
           </div>
-          <div class="col-lg-3 order-2 order-lg-1">
-            <!--*** MENUS AND FILTERS *** -->
-            <div class="card sidebar-menu mb-4">
-              <div class="card-header">
-                <h3 class="h4 card-title">Categories</h3>
-              </div>
-              <div class="card-body">
-                <ul class="nav nav-pills flex-column category-menu">
-                  <li><a href="category.html" class="nav-link">Men <span class="badge badge-secondary">42</span></a>
-                    <ul class="list-unstyled">
-                      <li><a href="category.html" class="nav-link">T-shirts</a></li>
-                      <li><a href="category.html" class="nav-link">Shirts</a></li>
-                      <li><a href="category.html" class="nav-link">Pants</a></li>
-                      <li><a href="category.html" class="nav-link">Accessories</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="category.html" class="nav-link active">Ladies <span class="badge badge-light">123</span></a>
-                    <ul class="list-unstyled">
-                      <li><a href="category.html" class="nav-link">T-shirts</a></li>
-                      <li><a href="category.html" class="nav-link">Skirts</a></li>
-                      <li><a href="category.html" class="nav-link">Pants</a></li>
-                      <li><a href="category.html" class="nav-link">Accessories</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="category.html" class="nav-link">Kids <span class="badge badge-secondary">11</span></a>
-                    <ul class="list-unstyled">
-                      <li><a href="category.html" class="nav-link">T-shirts</a></li>
-                      <li><a href="category.html" class="nav-link">Skirts</a></li>
-                      <li><a href="category.html" class="nav-link">Pants</a></li>
-                      <li><a href="category.html" class="nav-link">Accessories</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+          <div class="col-lg-12">
+            <div class="col-lg-3 order-2 order-lg-1">
+              <!--*** MENUS AND FILTERS *** -->
+              <?php
+              // include('includes/sidebar.php');
+              ?> 
+              <!-- *** MENUS AND FILTERS END ***-->
             </div>
-            <div class="card sidebar-menu mb-4">
-              <div class="card-header">
-                <h3 class="h4 card-title">Brands <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="form-group">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Armani (10)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Versace (12)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Carlo Bruni (15)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Jack Honey (14)
-                      </label>
-                    </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+              <div id="productMain" class="row">
+                <div class="col-md-6">
+                  <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-fluid"></div>
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img2 ?>" alt="" class="img-fluid"></div>
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img3 ?>" alt="" class="img-fluid"></div>
                   </div>
-                  <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-                </form>
-              </div>
-            </div>
-            <div class="card `side`bar-menu mb-4">
-              <div class="card-header">
-                <h3 class="h4 card-title">Colours <a href="#" class="btn btn-sm btn-danger pull-right"><i class="fa fa-times-circle"></i> Clear</a></h3>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="form-group">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"><span class="colour white"></span> White (14)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"><span class="colour blue"></span> Blue (10)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"><span class="colour green"></span> Green (20)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"><span class="colour yellow"></span> Yellow (13)
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"><span class="colour red"></span> Red (10)
-                      </label>
-                    </div>
-                  </div>
-                  <button class="btn btn-default btn-sm btn-primary"><i class="fa fa-pencil"></i> Apply</button>
-                </form>
-              </div>
-            </div>
-            <!-- *** MENUS AND FILTERS END ***-->
-            <div class="banner"><a href="#"><img src="admin_area/admin_product_images/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
-          </div>
-          <div class="col-lg-9 order-1 order-lg-2">
-            <div id="productMain" class="row">
-              <div class="col-md-6">
-                <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
-                  <div class="item"> <img src="admin_area/admin_product_images/detailbig1.jpg" alt="" class="img-fluid"></div>
-                  <div class="item"> <img src="admin_area/admin_product_images/detailbig2.jpg" alt="" class="img-fluid"></div>
-                  <div class="item"> <img src="admin_area/admin_product_images/detailbig3.jpg" alt="" class="img-fluid"></div>
                 </div>
-                <div class="ribbon sale">
-                  <div class="theribbon">SALE</div>
-                  <div class="ribbon-background"></div>
-                </div>
-                <!-- /.ribbon-->
-                <div class="ribbon new">
-                  <div class="theribbon">NEW</div>
-                  <div class="ribbon-background"></div>
-                </div>
-                <!-- /.ribbon-->
-              </div>
-              <div class="col-md-6">
-                <div class="box">
-                  <h1 class="text-center">White Blouse Armani</h1>
-                  <hr>
-                  <form action="details.php" method="post">
-                    <div class="form-group d-flex justify-content-between">
-                      <label for="col-md-6" class="form-label"><strong>Quantity</strong></label>
-                      <select name="product_qty" style="max-width:175px;" class="form-control">
-                        <option value="">Select Quantity</option>
-                        <?php for ($i = 1; $i <= 10; $i++) { ?>
-                          <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                        <?php } ?>
-                      </select>
+                <div class="col-md-6">
+                  <div class="box">
+                    <h1 class="text-center"><?php echo $pro_title ?></h1>
+                    <hr>
+                    <form action="index.php?add_cart=<?php echo $product_id; ?>" method="post">
+                      <div class="form-group d-flex justify-content-between">
+                        <label for="col-md-6" class="form-label"><strong>Quantity</strong></label>
+                        <select name="product_qty" style="max-width:175px;" class="form-control">
+                          <option value="">Select Quantity</option>
+                          <?php for ($i = 1; $i <= 5; $i++) { ?>
+                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                      <div class="form-group d-flex justify-content-between">
+                        <label for="col-md-6" class="form-label"><strong>Size</strong></label>
+                        <select name="product_size" style="max-width:175px;" class="form-control">
+                          <option value="">Select Size</option>
+                          <option value="S">S</option>
+                          <option value="M">M</option>
+                          <option value="L">L</option>
+                          <option value="XL">XL</option>
+                        </select>
+                      </div>
+                    </form>
+                    <hr>
+                    <!-- <div class='d-flex justify-content-center'>
+                      <label class="price mb-1"><strong>M.R.P.:</strong></label><del class="price mb-1">&#8377;950.00</del>
+                    </div> -->
+                    <div class='d-flex justify-content-center align-items-center'>
+                      <label class="price mb-1"><strong>Price:</strong></label>
+                      <h4 class="price mb-1">&#8377;<?php echo $pro_price ?></h4>
                     </div>
-                    <div class="form-group d-flex justify-content-between">
-                      <label for="col-md-6" class="form-label"><strong>Size</strong></label>
-                      <select name="product_size" style="max-width:175px;" class="form-control">
-                        <option value="">Select Size</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                      </select>
-                    </div>
-                  </form>
-                  <hr>
-                  <div class='d-flex justify-content-center'>
-                    <label class="price mb-1"><strong>M.R.P.:</strong></label><del class="price mb-1">&#8377;950.00</del>
-                  </div>
-                  <div class='d-flex justify-content-center'>
-                    <label class="price mb-1"><strong>Price:</strong></label>
-                    <p class="price mb-1">&#8377;550.00 <strong>[Incl. of VAT]</strong></p>
-                  </div>
-                  <div class='d-flex justify-content-center'>
-                    <label class="price mb-0"><strong>You Save:</strong></label>
+                    <!-- <div class='d-flex justify-content-center'>
+                      <label class="price mb-0"><strong>You Save:</strong></label>
                       <p class="price mb-0">&#8377;400.00</p>
-                  </div>
-                  <hr>
-                  <p class="text-center buttons"><a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a><a href="#" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a></p>
-                  <hr>
-                  <div data-slider-id="1" class="owl-thumbs">
-                    <button class="owl-thumb-item"><img src="admin_area/admin_product_images/detailsquare.jpg" alt="" class="img-fluid"></button>
-                    <button class="owl-thumb-item"><img src="admin_area/admin_product_images/detailsquare2.jpg" alt="" class="img-fluid"></button>
-                    <button class="owl-thumb-item"><img src="admin_area/admin_product_images/detailsquare3.jpg" alt="" class="img-fluid"></button>
-                  </div>
-                </div>
-              </div>
-              <div id="details" class="box">
-                <p></p>
-                <h4>Product details</h4>
-                <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                <h4>Material &amp; care</h4>
-                <ul>
-                  <li>Polyester</li>
-                  <li>Machine wash</li>
-                </ul>
-                <h4>Size &amp; Fit</h4>
-                <ul>
-                  <li>Regular fit</li>
-                  <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                </ul>
-                <blockquote>
-                  <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em></p>
-                </blockquote>
-                <hr>
-                <div class="social">
-                  <h4>Show it to your friends</h4>
-                  <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
-                </div>
-              </div>
-              <div class="row same-height-row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="box same-height">
-                    <h3>You may also like these products</h3>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
+                    </div> -->
+                    <hr>
+                    <p class="text-center buttons">
+                      <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                      <!-- <a href="#" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
+                    </p>
+                    <hr>
+                    <div data-slider-id="1" class="owl-thumbs">
+                      <button class="owl-thumb-item"><img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-fluid"></button>
+                      <button class="owl-thumb-item"><img src="admin_area/admin_product_images/<?php echo $pro_img2 ?>" alt="" class="img-fluid"></button>
+                      <button class="owl-thumb-item"><img src="admin_area/admin_product_images/<?php echo $pro_img3 ?>" alt="" class="img-fluid"></button>
                     </div>
                   </div>
-                  <!-- /.product-->
                 </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                      </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
+                <div id="details" class="box">
+                  <h4>Product details</h4>
+                  <div>
+                    <p><?php echo $pro_desc; ?></p>
+                  </div>
+                  <!-- <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+                  <h4>Material &amp; care</h4>
+                  <ul>
+                    <li>Polyester</li>
+                    <li>Machine wash</li>
+                  </ul>
+                  <h4>Size &amp; Fit</h4>
+                  <ul>
+                    <li>Regular fit</li>
+                    <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+                  </ul> -->
+                  <div>
+                    <blockquote>
+                      <p><em>Define style this season with <?php echo $pro_title ?>'s new range of trendy clothes, crafted with intricate details.</em></p>
+                    </blockquote>
+                  </div>
+                  <!--<hr>
+                   <div class="social">
+                    <h4>Show it to your friends</h4>
+                    <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
+                  </div> -->
+                </div>
+                <!-- <div class="row same-height-row"> -->
+                <!-- <div class="col-md-3 col-sm-6">
+                    <div class="box same-height">
+                      <h3>You may also like these products</h3>
                     </div>
                   </div>
-                  <!-- /.product-->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                  <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
                       </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
+                    </div> -->
+                <!-- /.product-->
+                <!-- </div> -->
+                <!-- <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
+                      </div>
+                    </div> -->
+                <!-- /.product-->
+                <!-- </div> -->
+                <!-- <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
+                      </div>
+                    </div> -->
+                <!-- /.product-->
+                <!-- </div>
+                </div>
+                <div class="row same-height-row">
+                  <div class="col-md-3 col-sm-6">
+                    <div class="box same-height">
+                      <h3>Products viewed recently</h3>
                     </div>
                   </div>
-                  <!-- /.product-->
-                </div>
-              </div>
-              <div class="row same-height-row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="box same-height">
-                    <h3>Products viewed recently</h3>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                  <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
                       </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                    </div> -->
+                <!-- /.product-->
+                <!-- </div>
+                  <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
                       </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="product same-height">
-                    <div class="flip-container">
-                      <div class="flipper">
-                        <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                        <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                    </div> -->
+                <!-- /.product-->
+                <!-- </div>
+                  <div class="col-md-3 col-sm-6">
+                    <div class="product same-height">
+                      <div class="flip-container">
+                        <div class="flipper">
+                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
+                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
+                        </div>
+                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
+                      <div class="text">
+                        <h3>Fur coat</h3>
+                        <p class="price">&#8377;750</p>
                       </div>
-                    </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
-                    <div class="text">
-                      <h3>Fur coat</h3>
-                      <p class="price">&#8377;750</p>
-                    </div>
-                  </div>
-                  <!-- /.product-->
-                </div>
+                    </div> -->
+                <!-- /.product-->
               </div>
             </div>
-            <!-- /.col-md-9-->
           </div>
+          <!-- /.col-md-9-->
         </div>
       </div>
     </div>
-  
-    <!-- *** FOOTER *** -->
-      <?php include('includes/footer.php'); ?>    
-    <!-- *** FOOTER END ***-->
+  </div>
 
-    <!-- JavaScript files-->
-    <script src="styles/jquery/jquery.min.js"></script>
-    <script src="styles/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="styles/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="styles/owl.carousel/owl.carousel.min.js"></script>
-    <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-    <script src="js/front.js"></script>
+  <!-- *** FOOTER *** -->
+  <?php include('includes/footer.php'); ?>
+  <!-- *** FOOTER END ***-->
+
+  <!-- JavaScript files-->
+  <script src="styles/jquery/jquery.min.js"></script>
+  <script src="styles/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="styles/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="styles/owl.carousel/owl.carousel.min.js"></script>
+  <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+  <script src="js/front.js"></script>
 
 </body>
 
