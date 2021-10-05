@@ -148,7 +148,8 @@ if (isset($_GET['pro_id'])) {
                   <div class="box">
                     <h1 class="text-center"><?php echo $pro_title ?></h1>
                     <hr>
-                    <form action="index.php?add_cart=<?php echo $product_id; ?>" method="post">
+                    <?php echo add_cart(); ?>
+                    <form action="details.php?add_cart=<?php echo $product_id; ?>" method="post">
                       <div class="form-group d-flex justify-content-between">
                         <label for="col-md-6" class="form-label"><strong>Quantity</strong></label>
                         <select name="product_qty" style="max-width:175px;" class="form-control">
@@ -168,7 +169,7 @@ if (isset($_GET['pro_id'])) {
                           <option value="XL">XL</option>
                         </select>
                       </div>
-                    </form>
+                    
                     <hr>
                     <!-- <div class='d-flex justify-content-center'>
                       <label class="price mb-1"><strong>M.R.P.:</strong></label><del class="price mb-1">&#8377;950.00</del>
@@ -183,9 +184,10 @@ if (isset($_GET['pro_id'])) {
                     </div> -->
                     <hr>
                     <p class="text-center buttons">
-                      <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                      <button type="submit" name='submit' class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                       <!-- <a href="#" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
                     </p>
+                    </form>
                     <hr>
                     <div data-slider-id="1" class="owl-thumbs">
                       <button class="owl-thumb-item"><img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-fluid"></button>
@@ -200,7 +202,7 @@ if (isset($_GET['pro_id'])) {
                         <h4>Product details</h4>
                       </div>
                       <div class="card-body">
-                        <h4><?php echo $pro_desc; ?></h4>
+                          <h4 class="card-text"><?php echo $pro_desc; ?></h4>
                       </div>
                     </div>
                   </div>
@@ -319,7 +321,7 @@ if (isset($_GET['pro_id'])) {
               </div>
             </div>
             <?php
-            $get_products = "SELECT * FROM products order by 1 LIMIT 0,4";
+            $get_products = "SELECT * FROM products order by rand() LIMIT 0,4";
             $run_products = mysqli_query($con, $get_products);
             while ($res_products = mysqli_fetch_array($run_products)) {
               $pro_id = $res_products['product_id'];
