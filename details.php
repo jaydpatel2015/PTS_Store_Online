@@ -115,7 +115,7 @@ if (isset($_GET['pro_id'])) {
   <div id="all">
     <div id="content">
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-lg-12">
             <!-- breadcrumb-->
             <nav aria-label="breadcrumb">
@@ -132,16 +132,16 @@ if (isset($_GET['pro_id'])) {
               <!--*** MENUS AND FILTERS *** -->
               <?php
               // include('includes/sidebar.php');
-              ?> 
+              ?>
               <!-- *** MENUS AND FILTERS END ***-->
             </div>
-            <div class="col-lg-9 order-1 order-lg-2">
+            <div class="col-lg-12 order-1 order-lg-2">
               <div id="productMain" class="row">
                 <div class="col-md-6">
                   <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
-                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-fluid"></div>
-                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img2 ?>" alt="" class="img-fluid"></div>
-                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img3 ?>" alt="" class="img-fluid"></div>
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-responsive" height='530'></div>
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img2 ?>" alt="" class="img-responsive" height='530'></div>
+                    <div class="item"> <img src="admin_area/admin_product_images/<?php echo $pro_img3 ?>" alt="" class="img-responsive" height='530'></div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -194,12 +194,23 @@ if (isset($_GET['pro_id'])) {
                     </div>
                   </div>
                 </div>
-                <div id="details" class="box">
-                  <h4>Product details</h4>
-                  <div>
-                    <p><?php echo $pro_desc; ?></p>
+                <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>Product details</h4>
+                      </div>
+                      <div class="card-body">
+                        <h4><?php echo $pro_desc; ?></h4>
+                      </div>
+                    </div>
                   </div>
-                  <!-- <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+
+                <!-- <div id="details" class="box">
+                  <h4>Product details</h4>
+                  <div class="col-lg-12">
+                    <p><?php //echo $pro_desc; 
+                        ?></p> -->
+                <!-- <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
                   <h4>Material &amp; care</h4>
                   <ul>
                     <li>Polyester</li>
@@ -210,38 +221,13 @@ if (isset($_GET['pro_id'])) {
                     <li>Regular fit</li>
                     <li>The model (height 5'8" and chest 33") is wearing a size S</li>
                   </ul> -->
-                  <div>
-                    <blockquote>
-                      <p><em>Define style this season with <?php echo $pro_title ?>'s new range of trendy clothes, crafted with intricate details.</em></p>
-                    </blockquote>
-                  </div>
-                  <!--<hr>
+                <!--<hr>
                    <div class="social">
                     <h4>Show it to your friends</h4>
                     <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
-                  </div> -->
-                </div>
-                <!-- <div class="row same-height-row"> -->
-                <!-- <div class="col-md-3 col-sm-6">
-                    <div class="box same-height">
-                      <h3>You may also like these products</h3>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
-                <!-- /.product-->
-                <!-- </div> -->
+                  </div> 
+                  </div>-->
+
                 <!-- <div class="col-md-3 col-sm-6">
                     <div class="product same-height">
                       <div class="flip-container">
@@ -327,6 +313,30 @@ if (isset($_GET['pro_id'])) {
             </div>
           </div>
           <!-- /.col-md-9-->
+            <div class="col-md-3 col-sm-6">
+              <div class="box same-height">
+                <h3>You may also like these products</h3>
+              </div>
+            </div>
+            <?php
+            $get_products = "SELECT * FROM products order by 1 LIMIT 0,4";
+            $run_products = mysqli_query($con, $get_products);
+            while ($res_products = mysqli_fetch_array($run_products)) {
+              $pro_id = $res_products['product_id'];
+              $pro_title = $res_products['product_title'];
+              $pro_price = $res_products['product_price'];
+              $pro_img1 = $res_products['product_img1'];
+              echo " <div class='col-md-2 col-sm-6'>
+                        <div class='mb-2'><a href='details.php?pro_id=$pro_id'><img src='admin_area/admin_product_images/$pro_img1' class='img-responsive' height='250'></a></div>
+                        <div class='text-center'>
+                            <h4 class='mb-2'>$pro_title</h4>
+                            <p class='price'>&#8377;$pro_price</p>
+                        </div>
+                    </div>";
+            }
+            ?>
+            <!-- /.product-->
+          </div>
         </div>
       </div>
     </div>
