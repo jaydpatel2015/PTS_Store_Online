@@ -33,51 +33,7 @@ include('./functions/functions.php');
     <!-- Header File -Customer Section -->
     <?php include ('./includes/header.php'); ?>
     <!-- Header File -Customer Section -->
-    <div id="all">
-        <div id="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- breadcrumb-->
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">My Account</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <!-- Customer Sidebar -->
-                    <?php include('includes/sidebar.php'); ?>
-                    <!-- Customer Sidebar -->
-
-                    <!-- my orders page begins-->
-                    <?php if (isset($_GET['my_orders'])) {
-                        include('my_orders.php');
-                    } ?>
-                    <!-- my orders page ends -->
-
-                    <!-- Edit page begins-->
-                    <?php if (isset($_GET['edit_account'])) {
-                        include('edit_account.php');
-                    } ?>
-                    <!-- Edit page ends -->
-
-                    <!-- change password page begins-->
-                    <?php if (isset($_GET['change_password'])) {
-                        include('change_password.php');
-                    } ?>
-                    <!-- change password page ends -->
-
-                    <!-- delete account page begins-->
-                    <?php if (isset($_GET['delete_account'])) {
-                        include('delete_account.php');
-                    } ?>
-                    <!-- delete account page ends -->
-
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- *** FOOTER *** -->
     <?php include('includes/footer.php') ?>
     <!-- *** FOOTER END ***-->

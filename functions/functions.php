@@ -2,7 +2,7 @@
 
 $db = mysqli_connect('localhost', 'root', '', 'pts_store');
 
-//Retrieve IP address of Client
+//Retrieve IP address of Client starts here
 
 function getRealIPaddress(){
     switch(true){
@@ -12,10 +12,9 @@ function getRealIPaddress(){
         default : return $_SERVER['REMOTE_ADDR'];   
     }
 }
-
+//Retrieve IP address of client ends here
 
 //Add to cart function
-
 function add_cart(){
     global $db;
     if(isset($_GET['add_cart'])){
@@ -45,6 +44,28 @@ function add_cart(){
         }
     }   
 }
+//Add to cart ends
+
+// Items in cart starts
+
+function items(){
+    global $db;
+    $ip_add=getRealIPaddress();
+    $get_items="SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_items=mysqli_query($db,$get_items);
+    $count_items=mysqli_num_rows($run_items);
+    echo $count_items;
+}
+// Items in cart Ends
+
+// total Price starts
+
+function total_price() {
+
+}
+
+// total price ends
+
 
 // Retrieve Products in sidebar
 function getPro()
