@@ -48,10 +48,8 @@ include('./functions/functions.php');
             </div>
             <div class="col-lg-3">
                 <!-- Sidebar Starts -->
-            <?php include('includes/sidebar.php'); ?>
-            <!-- Sidebar Ends -->
-
-            </div>
+                    <?php include('includes/sidebar.php'); ?>
+                <!-- Sidebar Ends -->
             <div class="col-lg-9">
               <div id="productMain" class="row">
                 <div class="col-md-6">
