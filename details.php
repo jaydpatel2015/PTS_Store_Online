@@ -18,7 +18,6 @@ if (isset($_GET['pro_id'])) {
   $pro_img2 = $row_product['product_img2'];
   $pro_img3 = $row_product['product_img3'];
 
-
   $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
   $run_p_cat_query = mysqli_query($con, $get_p_cat);
   $row_p_cat = mysqli_fetch_array($run_p_cat_query);
@@ -41,7 +40,7 @@ if (isset($_GET['pro_id'])) {
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome CSS-->
-  <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+  <link rel=  "stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
   <!-- Google fonts - Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap">
   <!-- owl carousel-->
@@ -85,7 +84,7 @@ if (isset($_GET['pro_id'])) {
         <div id="navigation" class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="shop.php" class="nav-link active">Shop</a></li>
+              <li class="nav-item"><a href="shop.php" class="nav-link active">Shop</a></li>
             <li class="nav-item"><a href="customer/my_account.php" class="nav-link">My Account</a></li>
             <li class="nav-item"><a href="cart.php" class="nav-link">Shopping Cart</a></li>
             <li class="nav-item"><a href="contact.php" class="nav-link">Contact us</a></li>
@@ -147,8 +146,9 @@ if (isset($_GET['pro_id'])) {
                 <div class="col-md-6">
                   <div class="box">
                     <h1 class="text-center"><?php echo $pro_title ?></h1>
+                    <?php add_cart(); ?>
                     <hr>
-                    <form action="index.php?add_cart=<?php echo $product_id; ?>" method="post">
+                    <form action="details.php?add_cart=<?php echo $product_id; ?>" method="post">
                       <div class="form-group d-flex justify-content-between">
                         <label for="col-md-6" class="form-label"><strong>Quantity</strong></label>
                         <select name="product_qty" style="max-width:175px;" class="form-control">
@@ -168,7 +168,7 @@ if (isset($_GET['pro_id'])) {
                           <option value="XL">XL</option>
                         </select>
                       </div>
-                    </form>
+  
                     <hr>
                     <!-- <div class='d-flex justify-content-center'>
                       <label class="price mb-1"><strong>M.R.P.:</strong></label><del class="price mb-1">&#8377;950.00</del>
@@ -183,9 +183,10 @@ if (isset($_GET['pro_id'])) {
                     </div> -->
                     <hr>
                     <p class="text-center buttons">
-                      <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                      <button type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                       <!-- <a href="#" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a> -->
                     </p>
+                    </form>
                     <hr>
                     <div data-slider-id="1" class="owl-thumbs">
                       <button class="owl-thumb-item"><img src="admin_area/admin_product_images/<?php echo $pro_img1 ?>" alt="" class="img-fluid"></button>
@@ -195,151 +196,48 @@ if (isset($_GET['pro_id'])) {
                   </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4>Product details</h4>
-                      </div>
-                      <div class="card-body">
-                        <h4><?php echo $pro_desc; ?></h4>
-                      </div>
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Product details</h4>
+                    </div>
+                    <div class="card-body">
+                      <h4><?php echo $pro_desc; ?></h4>
                     </div>
                   </div>
-
-                <!-- <div id="details" class="box">
-                  <h4>Product details</h4>
-                  <div class="col-lg-12">
-                    <p><?php //echo $pro_desc; 
-                        ?></p> -->
-                <!-- <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-                  <h4>Material &amp; care</h4>
-                  <ul>
-                    <li>Polyester</li>
-                    <li>Machine wash</li>
-                  </ul>
-                  <h4>Size &amp; Fit</h4>
-                  <ul>
-                    <li>Regular fit</li>
-                    <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-                  </ul> -->
-                <!--<hr>
-                   <div class="social">
-                    <h4>Show it to your friends</h4>
-                    <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
-                  </div> 
-                  </div>-->
-
-                <!-- <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
-                <!-- /.product-->
-                <!-- </div> -->
-                <!-- <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
-                <!-- /.product-->
-                <!-- </div>
                 </div>
-                <div class="row same-height-row">
-                  <div class="col-md-3 col-sm-6">
-                    <div class="box same-height">
-                      <h3>Products viewed recently</h3>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product2_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product2.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
-                <!-- /.product-->
-                <!-- </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product1_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product1.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
-                <!-- /.product-->
-                <!-- </div>
-                  <div class="col-md-3 col-sm-6">
-                    <div class="product same-height">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front"><a href="details.php"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a></div>
-                          <div class="back"><a href="details.php"><img src="admin_area/admin_product_images/product3_2.jpg" alt="" class="img-fluid"></a></div>
-                        </div>
-                      </div><a href="details.php" class="invisible"><img src="admin_area/admin_product_images/product3.jpg" alt="" class="img-fluid"></a>
-                      <div class="text">
-                        <h3>Fur coat</h3>
-                        <p class="price">&#8377;750</p>
-                      </div>
-                    </div> -->
+
                 <!-- /.product-->
               </div>
             </div>
           </div>
           <!-- /.col-md-9-->
-            <div class="col-md-3 col-sm-6">
-              <div class="box same-height">
-                <h3>You may also like these products</h3>
-              </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="box same-height">
+              <h3>You may also like these products</h3>
             </div>
-            <?php
-            $get_products = "SELECT * FROM products order by 1 LIMIT 0,4";
-            $run_products = mysqli_query($con, $get_products);
-            while ($res_products = mysqli_fetch_array($run_products)) {
-              $pro_id = $res_products['product_id'];
-              $pro_title = $res_products['product_title'];
-              $pro_price = $res_products['product_price'];
-              $pro_img1 = $res_products['product_img1'];
-              echo " <div class='col-md-2 col-sm-6'>
+          </div>
+          <?php
+          $get_products = "SELECT * FROM products order by rand() LIMIT 0,4";
+          $run_products = mysqli_query($con, $get_products);
+          while ($res_products = mysqli_fetch_array($run_products)) {
+            $pro_id = $res_products['product_id'];
+            $pro_title = $res_products['product_title'];
+            $pro_price = $res_products['product_price'];
+            $pro_img1 = $res_products['product_img1'];
+            echo " <div class='col-md-2 col-sm-6'>
                         <div class='mb-2'><a href='details.php?pro_id=$pro_id'><img src='admin_area/admin_product_images/$pro_img1' class='img-responsive' height='250'></a></div>
                         <div class='text-center'>
                             <h4 class='mb-2'>$pro_title</h4>
                             <p class='price'>&#8377;$pro_price</p>
                         </div>
                     </div>";
-            }
-            ?>
-            <!-- /.product-->
-          </div>
+          }
+          ?>
+          <!-- /.product-->
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- *** FOOTER *** -->
