@@ -2,6 +2,31 @@
 
 $db=mysqli_connect('localhost','root','','pts_store');
 
+//Retrieve IP address of Client starts here
+
+function getRealIPaddress(){
+    switch(true){
+        case(!empty($_SERVER['HTTP_X_REAL_IP'])): return $_SERVER['HTTP_X_REAL_IP'];
+        case(!empty($_SERVER['HTTP_CLIENT_IP'])): return $_SERVER['HTTP_CLIENT_IP'];
+        case(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) : return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        default : return $_SERVER['REMOTE_ADDR'];   
+    }
+}
+//Retrieve IP address of client ends here
+
+
+//Items in cart starts here in My account_secion
+function items(){
+    global $db;
+    $ip_add=getRealIPaddress();
+    $get_items="SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_items=mysqli_query($db,$get_items);
+    $count_items=mysqli_num_rows($run_items);
+    echo $count_items;
+}
+//Items in cart ends here in my account_section
+
+
 // Retrieve Products in sidebar
 function getPro(){
     global $db;

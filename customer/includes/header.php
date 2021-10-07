@@ -1,94 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles/bootstrap4.6.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="shortcut icon" href="images/primetime_icon.png" type="image/x-icon">
-    <title>Prime Time Shopper</title>
-</head>
-<body>
-    <!-- Top Bar Starts Here -->
+<!-- navbar-->
+<header class="header mb-5">
+    <!--*** TOPBAR ***-->
     <div id="top">
         <div class="container">
-            <div class="col-md-6 offer">
-                <a href="#" id="btnWelcome" class="btn btn-primary btn-sm">Welcome,Guest</a>
-                <a href="#">Shopping Cart Total Price: INR 500, Total Item 2</a>
-            </div>
-            <div class="col-md-6">
-                <ul class="menu">
-                    <li><a href="customer_register.php">Register</a></li>
-                    <li><a href="checkout.php">My Account</a></li>
-                    <li><a href="gotocart.php">Go To Cart</a></li>
-                    <li><a href="login.php">Login</a></li>
-                </ul>
+            <div class="row">
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Welcome, Guest</a><a href="#" class="ml-1">Shopping Cart Total Price: &#8377;100, Total Items: <?php echo items(); ?></a></div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <ul class="menu list-inline mb-0">
+                        <li class="list-inline-item"><a href="../customer_register.php">Register</a></li>
+                        <li class="list-inline-item"><a href="my_account.php">My Account</a></li>
+                        <li class="list-inline-item"><a href="../cart.php">Go To Cart</a></li>
+                        <li class="list-inline-item"><a href="../customer_register.php">Login</a></li>
+                    </ul>
+                </div>  
             </div>
         </div>
+        <!-- *** TOP BAR END ***-->
     </div>
-    <!-- Top Bar Ends Here -->
-    
-    <!-- Navbar Starts from here -->
-    <div class="navbar navbar-expand-lg navbar-light">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container"><a href="index.php" class="navbar-brand home"><img src="logo/online-shopping.png" alt="PTS_logo" height=68 width=100 class="d-none d-md-inline-block"><img src="logo/online-shopping.png" height=50 width=50 alt="PTS_logo" class="d-inline-block d-md-none"><span class="sr-only">PTS - go to homepage</span></a>
+            <div class="navbar-buttons">
+                <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+                <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="cart.php" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div id="navigation" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a href="../index.php" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../shop.php" class="nav-link">Shop</a></li>
+                    <li class="nav-item"><a href="my_account.php" class="nav-link active">My Account</a></li>
+                    <li class="nav-item"><a href="../cart.php" class="nav-link">Shopping Cart</a></li>
+                    <li class="nav-item"><a href="../contact.php" class="nav-link">Contact us</a></li>
+                </ul>
+                <div class="navbar-buttons d-flex justify-content-end">
+                    <!-- /.nav-collapse-->
+                    <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
+                    <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="../cart.php" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span><?php echo items();?> items in cart</span></a></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="search" class="collapse">
         <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php"><img src="images/primetimelogo.png" height="150" width="220" alt="siteLogoURL"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="shop.php">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">My Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.php">Shopping Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contactus.php">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="navbar-collapse collapse-right searchBtn">
-                <button class="btn btn-primary my-2 ml-2 mr-2 my-sm-0" type="button" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle Search</span>
-                    <i class="bi bi-search"></i>
-                </button>
-                <a href="cart.php" class="btn btn-primary navbar-btn right cartBtn">
-                    <i class="bi bi-cart-check"></i>
-                    <span>4 Items in Cart</span>
-                </a>
-            </div>
-            <div class="collapse clearfix" id='search'>
-                <form class="form-inline ml-2 my-lg-0" action="result.php" method="get">
-                    <div class="input-group"></div>
-                        <input class="form-control mr-sm-2" name="userquery" type="search" placeholder="Search" aria-label="Search" required>
-                        <button class="btn btn-primary mb-2 my-sm-1" name="search" type="submit"><i class="bi bi-search"></i></button>
+            <form role="search" method="get" action="results.php" class="ml-auto">
+                <div class="input-group">
+                    <input type="text" name="user_query" placeholder="Search Your Products here" required class="form-control">
+                    <div class="input-group-append">
+                        <button type="submit" name='search' class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </div>
-                </form>
-            </div>   
+                </div>
+            </form>
         </div>
     </div>
-    <!-- Navbar Ends Here -->
+</header>

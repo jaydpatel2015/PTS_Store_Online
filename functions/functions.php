@@ -2,6 +2,7 @@
 
 $db = mysqli_connect('localhost', 'root', '', 'pts_store');
 
+<<<<<<< HEAD
 // Get IP Address of Client Starts here
 function getRealIPaddress()
 {
@@ -63,6 +64,71 @@ function add_cart()
 // Get IP Address of Client Ends here
 
 
+=======
+//Retrieve IP address of Client starts here
+
+function getRealIPaddress(){
+    switch(true){
+        case(!empty($_SERVER['HTTP_X_REAL_IP'])): return $_SERVER['HTTP_X_REAL_IP'];
+        case(!empty($_SERVER['HTTP_CLIENT_IP'])): return $_SERVER['HTTP_CLIENT_IP'];
+        case(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) : return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        default : return $_SERVER['REMOTE_ADDR'];   
+    }
+}
+//Retrieve IP address of client ends here
+
+//Add to cart function
+function add_cart(){
+    global $db;
+    if(isset($_GET['add_cart'])){
+        $ip_add=getRealIPaddress();
+        $p_id=$_GET['add_cart'];
+        $product_qty=$_POST['product_qty'];
+        $product_size=$_POST['product_size'];
+        $check_product="select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
+        $run_check=mysqli_query($db,$check_product);
+        if(mysqli_num_rows($run_check)>0){
+            echo "<script>location.href('details.php?pro_id=$p_id','_self');</script>";
+            echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>Error !</strong> This Product is already exist in the cart.
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+        }else{
+            $query="INSERT INTO cart (p_id,ip_add,qty,size) VALUES ('$p_id','$ip_add','$product_qty','$product_size')";
+            $run_query=mysqli_query($db,$query);
+            echo "<script>location.href('details.php?pro_id=$p_id','_self');</script>";
+                // echo "<script>
+                //         <div class='alert alert-success' role='alert'>
+                //             Product added to cart successfully !
+                //         </div>
+                // </script>";
+        }
+    }   
+}
+//Add to cart ends
+
+// Items in cart starts
+
+function items(){
+    global $db;
+    $ip_add=getRealIPaddress();
+    $get_items="SELECT * FROM cart WHERE ip_add='$ip_add'";
+    $run_items=mysqli_query($db,$get_items);
+    $count_items=mysqli_num_rows($run_items);
+    echo $count_items;
+}
+// Items in cart Ends
+
+// total Price starts
+
+function total_price() {
+
+}
+
+// total price ends
+>>>>>>> f02f187751e2e575d010401dfb98a631b0fed68b
 
 
 // Retrieve Products in sidebar
