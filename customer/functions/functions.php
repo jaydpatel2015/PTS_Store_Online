@@ -26,6 +26,30 @@ function items(){
 }
 //Items in cart ends here in my account_section
 
+// total Price starts
+function total_price() {
+
+    global $db;
+    $ip_add=getRealIPaddress();
+    $total=0;
+    $select_cart="SELECT * FROM cart from ip_add='$ip_add'";
+    $run_cart=mysqli_query($db,$select_cart);
+    while($record=mysqli_fetch_array($run_cart)){
+        $pro_id=$record['p_id']; // p_id from cart table
+        $pro_qty=$record['qty'];
+        $pro_size=$record['size'];
+
+        $get_price="SELECT * FROM products where product_id='$pro_id'";
+        $run_price_query=mysqli_query($db,$get_price);
+        while($res_price=mysqli_fetch_array($run_price_query)){
+            $sub_total=$res_price['product_price'] * $pro_qty;
+            $total+=$sub_total;
+        }
+    }
+    echo $total;
+}
+// total price ends
+
 
 // Retrieve Products in sidebar
 function getPro(){

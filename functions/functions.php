@@ -24,8 +24,9 @@ function add_cart(){
         $product_size=$_POST['product_size'];
         $check_product="select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
         $run_check=mysqli_query($db,$check_product);
+        
         if(mysqli_num_rows($run_check)>0){
-            echo "<script>location.href('details.php?pro_id=$p_id','_self');</script>";
+            echo "<script>window.open('details.php?pro_id=$p_id','_self');</script>";
             echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
                     <strong>Error !</strong> This Product is already exist in the cart.
                     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -35,12 +36,12 @@ function add_cart(){
         }else{
             $query="INSERT INTO cart (p_id,ip_add,qty,size) VALUES ('$p_id','$ip_add','$product_qty','$product_size')";
             $run_query=mysqli_query($db,$query);
-            echo "<script>location.href('details.php?pro_id=$p_id','_self');</script>";
-                // echo "<script>
-                //         <div class='alert alert-success' role='alert'>
-                //             Product added to cart successfully !
-                //         </div>
-                // </script>";
+            echo "<script>window.open('details.php?pro_id=$p_id','_self');</script>";
+                 echo "<script>
+                         <div class='alert alert-success' role='alert'>
+                            Product added to cart successfully !
+                         </div>
+                 </script>";
         }
     }   
 }
@@ -59,11 +60,26 @@ function items(){
 // Items in cart Ends
 
 // total Price starts
-
 function total_price() {
+    global $db;
+    $ip_add=getRealIPaddress();
+    $total=0;
+    $select_cart="SELECT * FROM cart where ip_add='$ip_add'";
+    $run_cart=mysqli_query($db,$select_cart);
+    while($record=mysqli_fetch_array($run_cart)){
+        $pro_id=$record['p_id']; // p_id from cart table
+        $pro_qty=$record['qty'];
+        $pro_size=$record['size'];
 
+        $get_price="SELECT * FROM products where product_id='$pro_id'";
+        $run_price_query=mysqli_query($db,$get_price);
+        while($res_price=mysqli_fetch_array($run_price_query)){
+            $sub_total=$res_price['product_price'] * $pro_qty;
+            $total+=$sub_total;
+        }
+    }
+    echo $total;
 }
-
 // total price ends
 
 

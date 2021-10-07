@@ -1,6 +1,6 @@
 <?php
 include('includes/db_config.php');
-include('./functions/functions.php');
+include('functions/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,13 @@ include('./functions/functions.php');
             <div class="box">
               <form method="post" action="cart.php" enctype="multipart/form-data">
                 <h1>Shopping cart</h1>
-                <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+                <?php 
+                    $ip_add=getRealIPaddress();
+                    $select_cart="SELECT * FROM cart where ip_add='$ip_add'";
+                    $run_cart=mysqli_query($con,$select_cart);
+                    $count=mysqli_num_rows($run_cart);
+                ?>
+                <p class="text-muted">You currently have <?php echo $count; ?> item(s) in your cart.</p>
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
@@ -65,35 +71,40 @@ include('./functions/functions.php');
                       </tr>
                     </thead>
                     <tbody>
+                      <?php 
+                          $total=0;
+                          while($row_cart=mysqli_fetch_array($run_cart)){
+                            $pro_id=$row_cart['p_id'];
+                            $pro_size=$row_cart['size'];
+                            $pro_qty=$row_cart['qty'];
+
+                            $get_products="SELECT * FROM products where product_id='$pro_id'";
+                            $run_products=mysqli_query($con,$get_products);
+                            while($res_product=mysqli_fetch_array($run_products)){
+                                  $product_title=$res_product['product_title'];
+                                  $product_img1=$res_product['product_img1'];
+                                  $only_price=$res_product['product_price'];
+                                  $sub_total=$res_product['product_price'] * $pro_qty;
+                                  $total+=$sub_total;
+                      ?>
                       <tr>
-                        <td><a href="#"><img src="admin_area/admin_product_images/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-                        <td><a href="#">White Blouse Armani</a></td>
-                        <td>M</td>
-                        <td>
-                          <input type="number" value="2" class="form-control">
-                        </td>
-                        <td>&#8377;550</td>
+                        <td><img src="admin_area/admin_product_images/<?php echo $product_img1; ?> "></td>
+                        <td><a href="#"><?php echo $product_title; ?></a></td>
+                        <td><?php echo $pro_size ?></td>
+                        <td><?php echo $pro_qty ?></td>
+                        <td>&#8377;<?php echo $only_price ?></td>
                         <td>&#8377;0.00</td>
                         <td class="text-center"><a href='#' name=remove[]><i class="fa fa-trash-o"></i></a></td>
-                        <td>&#8377;1100</td>
+                        <td>&#8377;<?php echo $sub_total ?></td>
                       </tr>
-                      <tr>
-                        <td><a href="#"><img src="admin_area/admin_product_images/basketsquare.jpg" alt="Black Blouse Armani"></a></td>
-                        <td><a href="#">Black Blouse Armani</a></td>
-                        <td>M</td>
-                        <td>
-                          <input type="number" value="1" class="form-control">
-                        </td>
-                        <td>&#8377;550</td>
-                        <td>&#8377;0.00</td>
-                        <td class="text-center"><a href='#' name=remove[]><i class="fa fa-trash-o"></i></a></td>
-                        <td>&#8377;550</td>
-                      </tr>
-                    </tbody>
+                      <?php 
+                          }}
+                      ?>
+                      </tbody>
                     <tfoot>
                       <tr>
                         <th colspan="7">Total</th>
-                        <th colspan="1">&#8377;1650</th>
+                        <th colspan="1">&#8377;<?php echo $total ?></th>
                       </tr>
                     </tfoot>
                   </table>

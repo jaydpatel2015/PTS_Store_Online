@@ -31,7 +31,7 @@ include('functions/functions.php');
 
 <body>
    <!-- Header File Loads here -->
-      <?php include ('includes/header.php'); ?>
+    <?php include ('includes/header.php'); ?>
    <!-- Header files ends here-->
   <div id="all">
     <div id="content">

@@ -144,5 +144,4 @@ include('./functions/functions.php');
       <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
       <script src="js/front.js"></script>
 </body>
-
 </html>
