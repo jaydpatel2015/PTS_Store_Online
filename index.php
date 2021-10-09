@@ -12,7 +12,7 @@ include('./functions/functions.php');
   <title>Prime Time Shopper</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="sweetalert2.all.min.js"></script>
+  <script src="styles/jquery/jquery.min.js"></script>
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome CSS-->
@@ -138,7 +138,8 @@ include('./functions/functions.php');
       <!-- *** Copyright End ***-->
 
       <!-- JavaScript files-->
-      <script src="styles/jquery/jquery.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
       <script src="styles/bootstrap/js/bootstrap.bundle.min.js"></script>
       <script src="styles/jquery.cookie/jquery.cookie.js"> </script>
       <script src="styles/owl.carousel/owl.carousel.min.js"></script>
