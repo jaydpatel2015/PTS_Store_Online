@@ -83,7 +83,7 @@ include('functions/functions.php');
                                 <div class='product'>
                                       <div class='card text-center'>
                                             <div class='card-header'>
-                                                <a href='details.php?pro_id=$pro_id'><img id='proImg' class='card-img-top' src='admin_area/admin_product_images/$pro_img1'></a>
+                                                <a href='details.php?pro_id=$pro_id'><img id='proImg' class='card-img-top' src='admin_area/admin_product_images/$pro_img1' ></a>
                                             </div>
                                             <div class='card-body'>
                                                 <h4 class='card-title'><a href='details.php?pro_id=$pro_id'>$pro_title</a></h4>

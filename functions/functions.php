@@ -1,5 +1,4 @@
 <?php
-
 $db = mysqli_connect('localhost', 'root', '', 'pts_store');
 
 //Retrieve IP address of client starts here
@@ -36,11 +35,10 @@ function add_cart(){
             $query="INSERT INTO cart (p_id,ip_add,qty,size) VALUES ('$p_id','$ip_add','$product_qty','$product_size')";
             $run_query=mysqli_query($db,$query);
             echo "<script>window.open('details.php?pro_id=$p_id','_self');</script>";
-                 echo "<script>
-                         <div class='alert alert-success' role='alert'>
-                            Product added to cart successfully !
-                         </div>
-                 </script>";
+                 echo "<script>";
+                 echo "<script type='text/javascript'>";
+                 echo "setTimeout(function () { swal('WOW!','Message!','success');";
+                 echo '}, 1000);</script>';
         }
     }   
 }
@@ -92,7 +90,7 @@ function getPro()
         $pro_title = $row_product['product_title'];
         $pro_price = $row_product['product_price'];
         $pro_img1 = $row_product['product_img1'];
-        echo "<div class='col-lg-2 col-md-4 d-flex justify-content-between'>
+        echo "<div class='col-lg-3 col-md-3'>
                 <div class='product'>
                     <div class='card text-center mb-1'>
                         <div class='card-heading p-1'>
@@ -101,8 +99,8 @@ function getPro()
                         <div class='card-body'> 
                             <h4 class='card-title'><a href='details.php?product_id=$pro_id'>$pro_title</a></h4>
                             <h4 class='card-text'><strong>&#8377;</strong>$pro_price</h4>
-                            <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='bi bi-info-circle'></i> View Details</a>
-                            <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='bi bi-cart-plus'></i> Add to Cart</a>
+                            <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='fa fa-info-circle'></i> View Details</a>
+                            <a href='details.php?pro_id=$pro_id' class='btn btn-primary btn-sm mb-1'><i class='fa fa-cart-plus'></i> Add to Cart</a>
                         </div>
                     </div>
                 </div>

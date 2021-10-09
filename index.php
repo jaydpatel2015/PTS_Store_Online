@@ -12,6 +12,7 @@ include('./functions/functions.php');
   <title>Prime Time Shopper</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="sweetalert2.all.min.js"></script>
   <!-- Bootstrap CSS-->
   <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome CSS-->

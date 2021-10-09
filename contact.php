@@ -107,37 +107,38 @@ include('./functions/functions.php');
                             <hr>
                             <div id="map"></div>
                             <hr>
+                            <!-- form starts here -->
                             <h2>Contact form</h2>
                             <form method='post' action=''>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="firstname">Firstname</label>
-                                            <input id="firstname" type="text" class="form-control" required>
+                                            <input id="firstname" type="text" name="fname" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lastname">Lastname</label>
-                                            <input id="lastname" type="text" class="form-control" required>
+                                            <input id="lastname" type="text" name="lname" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input id="email" type="text" class="form-control" required>
+                                            <input id="email" type="text" name="email" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="subject">Subject</label>
-                                            <input id="subject" type="text" class="form-control">
+                                            <input id="subject" type="text" name="subject" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="message">Message</label>
-                                            <textarea id="message" class="form-control"></textarea>
+                                            <textarea id="message" name="message" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
@@ -146,6 +147,17 @@ include('./functions/functions.php');
                                 </div>
                                 <!-- /.row-->
                             </form>
+                            <!-- form ends here -->
+                            <?php 
+                                if(isset($_POST['submit'])){
+                                    $sender_fname=$_POST['fname'];
+                                    $sender_lname=$_POST['lname'];
+                                    $email=$_POST['email'];
+                                    $subject=$_POST['subject'];
+                                    $msg=$_POST['message'];
+                                    
+                                }
+                            ?>
                         </div>
                     </div>
                     <!-- /.col-md-9-->
