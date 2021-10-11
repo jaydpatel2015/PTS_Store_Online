@@ -150,13 +150,24 @@ include('./functions/functions.php');
                             <!-- form ends here -->
                             <?php 
                                 if(isset($_POST['submit'])){
+                                    
+                                    // Email for Admin
                                     $sender_fname=$_POST['fname'];
                                     $sender_lname=$_POST['lname'];
                                     $email=$_POST['email'];
                                     $subject=$_POST['subject'];
                                     $msg=$_POST['message'];
+                                    $receiver_mail='noobprogrammer83@gmail.com';
+                                    mail($receiver_mail,$sender_fname,$subject,$msg,$email);
                                     
-                                }
+                                    //Email for sender
+                                    $email=$_POST['email'];
+                                    $subject='Thank you for choosing Prime Time Shopper as your Trusted Shopping Hub';
+                                    $msg="We have received your query and we will get back to you at earliest";
+                                    $from="";
+                                    mail($email,$subject,$msg,$from);
+                                    echo "<h2 class='text-center alert alert-success alert-fixed' role-'alert'>Your Email has been sent successfully</h2>";
+                                }   
                             ?>
                         </div>
                     </div>
