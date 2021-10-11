@@ -57,39 +57,50 @@ include('./functions/functions.php');
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input id="name" type="text" name='c_name' class="form-control" required>
+                                    <input id="name" type="text" name='customer_name' class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input id="email" type="text" name='c_email' class="form-control" required>
+                                    <input id="email" type="text" name='customer_email' class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input id="password" type="password" name='c_password' class="form-control" required>
+                                    <input id="password" type="password" name='customer_pass' class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Reconfirm Password</label>
                                     <input id="password" type="password" name='r_c_password' class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Country</label>
-                                    <input id="country" name='c_country' type="text" class="form-control">
+                                    <label>Country</label>
+                                    <select id="country_id" name="customer_country" class='form-control'>
+                                    <option value=''>Select your country</option>
+                                    <?php include ('includes/db_config.php'); 
+                                        $get_country='select id,name from countries';
+                                        $run_country_query=mysqli_query($con,$get_country);
+                                        while($row_country=mysqli_fetch_array($run_country_query)){
+                                    ?>
+                                        <option value="<?php echo $row_country['id'] ?>"><?php echo $row_country['name'] ?></option>
+                                    <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="state">State</label>
-                                    <input id="state" name='c_state' type="text" class="form-control">
+                                    <label>State</label>
+                                    <select id="state_id" name="customer_state" class='form-control'>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input id="state" name='c_city' type="text" class="form-control">
+                                    <label>City</label>
+                                    <select id="city_id" name="customer_city" class='form-control'>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="address">address</label>
-                                    <input id="address" name='c_address' type="text" class="form-control">
+                                    <label>Address</label>
+                                    <input id="address" name='customer_address' type="text" class="form-control">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group">    
                                     <label for="image">Profile Pic</label>
-                                    <input id="profile_pic" name='c_img' type="file" class="form-control">
+                                    <input id="profile_pic" name='customer_img' type="file" class="form-control">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" name='register' class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
@@ -138,6 +149,39 @@ include('./functions/functions.php');
     <script src="styles/owl.carousel/owl.carousel.min.js"></script>
     <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="js/front.js"></script>
-</body>
 
+<script type='text/javascript'>
+$(document).ready(function(){
+    $('#country_id').on('change',function(){
+        var country_id=this.value;
+        $.ajax({
+            url:'states.php',
+            method:'post',
+            data:{
+                country_id:country_id,
+            },
+            success:function(result){
+                $('#state_id').html(result);
+                $('#city_id').html("<option value=''>Select your state first</option>");
+            }
+        })
+    })
+
+    $('#state_id').on('change',function(){
+        var state_id=this.value
+        $.ajax({
+            url:'cities.php',
+            method:'post',
+            data:{
+                state_id:state_id,
+            },
+            success:function(result){
+                $('#city_id').html(result);
+            }
+        })
+    })  
+})  
+</script>
+</body>
 </html>
+
