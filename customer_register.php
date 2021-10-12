@@ -199,7 +199,7 @@ include('functions/functions.php');
             $c_img=$_FILES['customer_img']['name'];
             $c_img_tmp=$_FILES['customer_img']['tmp_name'];
             $c_ip=getRealIPaddress();
-            move_uploaded_file($c_img_tmp,"/customer/customer_images/$c_img");
+            move_uploaded_file($c_img_tmp,"customer/customer_images/$c_img");
             $insert_customer="INSERT INTO customers (customer_name,customer_email,customer_pass,customer_contact,customer_country,customer_state,customer_city,customer_address,customer_img,customer_ip) VALUES ('$c_name','$c_email','$c_pass','$c_contact','$c_country','$c_state','$c_city','$c_address','$c_img','$c_ip')";
             $run_customer=mysqli_query($con,$insert_customer);
             
@@ -209,6 +209,7 @@ include('functions/functions.php');
 
             if($check_cart>0){
                 $_SESSION['customer_email']=$c_email;
+                $_SESSION['customer_name']=$c_name;
                 echo    "<div class='alert alert-success alert-dismissible fade show alert-fixed' role='alert'>
                             <i class='fa fa-check'>&nbsp;&nbsp;</i><h4>Success! Customer Registered Successfully</h4>
                             <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
@@ -216,6 +217,7 @@ include('functions/functions.php');
                 echo "<script>window.open('checkout.php','_self')</script>";
                 
             }else{
+                $_SESSION['customer_name']=$c_name;
                 $_SESSION['customer_email']=$c_email;
                 echo    "<div class='alert alert-success alert-dismissible fade show alert-fixed' role='alert'>
                             <i class='fa fa-check'>&nbsp;&nbsp;</i><h4>Success! Customer Registered Successfully</h4>
