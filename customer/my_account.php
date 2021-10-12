@@ -1,6 +1,6 @@
 <?php
-include('includes/db_config.php');
-include('functions/functions.php');
+    include "../includes/db_config.php";
+    include "./functions/functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +26,12 @@ include('functions/functions.php');
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="styles/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="./logo/primetime_icon.png">
+    <link rel="shortcut icon" href="../logo/primetime_icon.png">
 </head>
 
 <body>
     <!-- Header File -Customer Section -->
-    <?php include ('./includes/header.php'); ?>
+    <?php include('includes/header.php') ?>
     <!-- Header File -Customer Section -->
     <div id="all">
         <div id="content">
@@ -47,7 +47,7 @@ include('functions/functions.php');
                         </nav>
                     </div>
                     <!-- Customer Sidebar -->
-                    <?php include('includes/sidebar.php'); ?>
+                    <?php include('./includes/sidebar.php'); ?>
                     <!-- Customer Sidebar -->
 
                     <!-- my orders page begins-->
