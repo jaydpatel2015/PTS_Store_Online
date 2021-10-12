@@ -1,20 +1,30 @@
+<!-- <?php 
+  session_start();
+  echo $_SESSION['customer_email'];
+
+  ?> -->
 <!-- navbar-->
   <header class="header mb-5">
-    <!--
-      *** TOPBAR ***
-      _________________________________________________________
-      -->
+    <!--*** TOPBAR ***-->
     <div id="top">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Welcome, <?php (!isset($_SESSION['customer_name'])) ? "Guest" : $_SESSION['customer_name'] ?></a><a href="#" class="ml-1">Shopping Cart Total Price: &#8377;<?php echo total_price(); ?>, Total Items: <?php echo items() ?></a></div>
+          <div class="col-lg-6 offer mb-3 mb-lg-0">
+            <a href="#" class="btn btn-success btn-sm"><?php if(!isset($_SESSION['customer_email'])) {echo "Welcome,Guest";} else{ echo "Welcome,".$_SESSION['customer_email']."";} ?></a><a href="#" class="ml-1">Shopping Cart Total Price: &#8377;<?php echo total_price(); ?>, Total Items: <?php echo items() ?></a>
+          </div>
           <div class="col-lg-6 text-center text-lg-right">
             <ul class="menu list-inline mb-0">
               <!-- <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li> -->
               <li class="list-inline-item"><a href="customer_register.php">Register</a></li>
               <li class="list-inline-item"><a href="customer/my_account.php">My Account</a></li>
               <li class="list-inline-item"><a href="cart.php">Go To Cart</a></li>
-              <li class="list-inline-item"><a href="customer/my_account.php">Login</a></li>
+              <li class="list-inline-item">
+                <?php if(!isset($_SESSION['customer_email'])) { ?>
+                    <a href="checkout.php">Login</a>
+                <?php }else{ ?>
+                    <a href="logout.php">Logout</a>
+                <?php } ?>
+              </li>
             </ul>
           </div>
         </div>

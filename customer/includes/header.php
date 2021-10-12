@@ -14,7 +14,13 @@
               <li class="list-inline-item"><a href="customer_register.php">Register</a></li>
               <li class="list-inline-item"><a href="customer/my_account.php">My Account</a></li>
               <li class="list-inline-item"><a href="cart.php">Go To Cart</a></li>
-              <li class="list-inline-item"><a href="customer/my_account.php">Login</a></li>
+              <li class="list-inline-item">
+              <?php if(!isset($_SESSION['customer_email'])) { ?>
+                    <a href="../checkout.php">Login</a>
+                <?php }else{ ?>
+                    <a href="logout.php">Logout</a>
+                <?php } ?>
+              </li>
             </ul>
           </div>
         </div>

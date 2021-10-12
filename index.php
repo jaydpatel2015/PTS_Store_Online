@@ -1,6 +1,6 @@
 <?php
 include('includes/db_config.php');
-include('./functions/functions.php');
+include('functions/functions.php');
 ?>
 
 <!DOCTYPE html>

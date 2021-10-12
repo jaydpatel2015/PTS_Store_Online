@@ -115,7 +115,7 @@ include('functions/functions.php');
                   <div class="left"><a href="index.php" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
                   <div class="right">
                     <button class="btn btn-primary" type='submit' name='update'><i class="fa fa-refresh"></i> Update cart</button>
-                    <a href='customer/my_account.php' class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+                    <a href='checkout.php' class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
                   </div>
                 </div>
               </form>
