@@ -1,6 +1,7 @@
 <?php
+session_start();
 include('includes/db_config.php');
-include('./functions/functions.php');
+include('functions/functions.php');
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +29,11 @@ include('./functions/functions.php');
     <!-- Favicon-->
     <link rel="shortcut icon" href="./logo/primetime_icon.png">
 </head>
-</head>
 
 <body>
-     <!-- Header File Loads here -->
-     <?php include ('includes/header.php'); ?>
-   <!-- Header files ends here-->
+    <!-- Header File Loads here -->
+    <?php include('includes/header.php'); ?>
+    <!-- Header files ends here-->
     <div id="all">
         <div id="content">
             <div class="container">
@@ -67,21 +67,29 @@ include('./functions/functions.php');
                                     <label for="password">Password</label>
                                     <input id="password" type="password" name='customer_pass' class="form-control" required>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="password">Reconfirm Password</label>
                                     <input id="password" type="password" name='r_c_password' class="form-control">
+                                </div> -->
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input id="address" name='customer_address' type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact</label>
+                                    <input type='number' max='10000000000' id="c_contact" name="customer_contact" class='form-control' />
                                 </div>
                                 <div class="form-group">
                                     <label>Country</label>
                                     <select id="country_id" name="customer_country" class='form-control'>
-                                    <option value=''>Select your country</option>
-                                    <?php include ('includes/db_config.php'); 
-                                        $get_country='select id,name from countries';
-                                        $run_country_query=mysqli_query($con,$get_country);
-                                        while($row_country=mysqli_fetch_array($run_country_query)){
-                                    ?>
-                                        <option value="<?php echo $row_country['id'] ?>"><?php echo $row_country['name'] ?></option>
-                                    <?php } ?>
+                                        <option value=''>Select your Country</option>
+                                        <?php include('includes/db_config.php');
+                                        $get_country = 'select id,name from countries';
+                                        $run_country_query = mysqli_query($con, $get_country);
+                                        while ($row_country = mysqli_fetch_array($run_country_query)) {
+                                        ?>
+                                            <option value="<?php echo $row_country['id'] ?>"><?php echo $row_country['name'] ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -94,11 +102,9 @@ include('./functions/functions.php');
                                     <select id="city_id" name="customer_city" class='form-control'>
                                     </select>
                                 </div>
+
+                                
                                 <div class="form-group">
-                                    <label>Address</label>
-                                    <input id="address" name='customer_address' type="text" class="form-control">
-                                </div>
-                                <div class="form-group">    
                                     <label for="image">Profile Pic</label>
                                     <input id="profile_pic" name='customer_img' type="file" class="form-control">
                                 </div>
@@ -132,15 +138,10 @@ include('./functions/functions.php');
             </div>
         </div>
     </div>
-    <!--
-    *** FOOTER ***
-    _________________________________________________________
-    -->
-    
 
-    <!-- *** Copyright Start *** -->
+    <!-- *** FOOTER *** -->
     <?php include('./includes/footer.php'); ?>
-    <!-- *** Copyright End ***-->
+    <!-- *** FOOTER *** -->
 
     <!-- JavaScript files-->
     <script src="styles/jquery/jquery.min.js"></script>
@@ -150,38 +151,78 @@ include('./functions/functions.php');
     <script src="styles/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="js/front.js"></script>
 
-<script type='text/javascript'>
-$(document).ready(function(){
-    $('#country_id').on('change',function(){
-        var country_id=this.value;
-        $.ajax({
-            url:'states.php',
-            method:'post',
-            data:{
-                country_id:country_id,
-            },
-            success:function(result){
-                $('#state_id').html(result);
-                $('#city_id').html("<option value=''>Select your state first</option>");
-            }
-        })
-    })
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#country_id').on('change', function() {
+                var country_id = this.value;
+                $.ajax({
+                    url: 'states.php',
+                    method: 'post',
+                    data: {
+                        country_id: country_id,
+                    },
+                    success: function(result) {
+                        $('#state_id').html(result);
+                        $('#city_id').html("<option value=''>Select your state first</option>");
+                    }
+                })
+            })
 
-    $('#state_id').on('change',function(){
-        var state_id=this.value
-        $.ajax({
-            url:'cities.php',
-            method:'post',
-            data:{
-                state_id:state_id,
-            },
-            success:function(result){
-                $('#city_id').html(result);
-            }
+            $('#state_id').on('change', function() {
+                var state_id = this.value
+                $.ajax({
+                    url: 'cities.php',
+                    method: 'post',
+                    data: {
+                        state_id: state_id,
+                    },
+                    success: function(result) {
+                        $('#city_id').html(result);
+                    }
+                })
+            })
         })
-    })  
-})  
-</script>
+    </script>
 </body>
-</html>
 
+</html>
+<?php 
+    if(isset($_POST['register'])){
+            $c_name=$_POST['customer_name'];
+            $c_email=$_POST['customer_email'];
+            $c_pass=password_hash($_POST['customer_pass'],PASSWORD_BCRYPT);
+            $c_contact=$_POST['customer_contact'];
+            $c_country=$_POST['customer_country'];
+            $c_state=$_POST['customer_state'];
+            $c_city=$_POST['customer_city'];
+            $c_address=mysqli_escape_string($con,$_POST['customer_address']);
+            $c_img=$_FILES['customer_img']['name'];
+            $c_img_tmp=$_FILES['customer_img']['tmp_name'];
+            $c_ip=getRealIPaddress();
+            move_uploaded_file($c_img_tmp,"/customer/customer_images/$c_img");
+            $insert_customer="INSERT INTO customers (customer_name,customer_email,customer_pass,customer_contact,customer_country,customer_state,customer_city,customer_address,customer_img,customer_ip) VALUES ('$c_name','$c_email','$c_pass','$c_contact','$c_country','$c_state','$c_city','$c_address','$c_img','$c_ip')";
+            $run_customer=mysqli_query($con,$insert_customer);
+            
+            $sel_cart="SELECT * FROM cart where ip_add='$c_ip'";
+            $run_cart=mysqli_query($con,$sel_cart);
+            $check_cart=mysqli_num_rows($run_cart);
+
+            if($check_cart>0){
+                $_SESSION['customer_email']=$c_email;
+                echo    "<div class='alert alert-success alert-dismissible fade show alert-fixed' role='alert'>
+                            <i class='fa fa-check'>&nbsp;&nbsp;</i><h4>Success! Customer Registered Successfully</h4>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+                echo "<script>window.open('checkout.php','_self')</script>";
+                
+            }else{
+                $_SESSION['customer_email']=$c_email;
+                echo    "<div class='alert alert-success alert-dismissible fade show alert-fixed' role='alert'>
+                            <i class='fa fa-check'>&nbsp;&nbsp;</i><h4>Success! Customer Registered Successfully</h4>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+                echo "<script>window.open('index.php','_self')</script>";
+
+            }
+    }
+?>
