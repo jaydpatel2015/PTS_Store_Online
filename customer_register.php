@@ -47,7 +47,7 @@ include('functions/functions.php');
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="box">
                             <h1>New account</h1>
                             <p class="lead">Not our registered customer yet?</p>
@@ -110,26 +110,6 @@ include('functions/functions.php');
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" name='register' class="btn btn-primary"><i class="fa fa-user-md"></i> Register</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="box">
-                            <h1>Login</h1>
-                            <p class="lead">Already our customer?</p>
-                            <hr>
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="text" name="email" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input id="password" type="password" name="password" class="form-control">
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" name="login" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
                                 </div>
                             </form>
                         </div>

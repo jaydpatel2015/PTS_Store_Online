@@ -33,6 +33,23 @@ include('functions/functions.php');
     <!-- Header File Loads here -->
     <?php include('includes/header.php'); ?>
     <!-- Header files ends here-->
+
+    <div class="col-md-12">
+        <div class="col-md-9">
+            <?php 
+                if(!isset($_SESSION['customer_email'])){
+                    include('customer/customer_login.php');   
+                }else{
+                    include('payment_options.php');
+                }
+            ?>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+
    <!-- *** FOOTER *** -->
    <?php include('./includes/footer.php'); ?>
     <!-- *** FOOTER *** -->
