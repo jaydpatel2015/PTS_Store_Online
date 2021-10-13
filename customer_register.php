@@ -170,7 +170,7 @@ include('functions/functions.php');
     if(isset($_POST['register'])){
             $c_name=$_POST['customer_name'];
             $c_email=$_POST['customer_email'];
-            $c_pass=password_hash($_POST['customer_pass'],PASSWORD_BCRYPT);
+            $c_pass=md5($_POST['customer_pass']);
             $c_contact=$_POST['customer_contact'];
             $c_country=$_POST['customer_country'];
             $c_state=$_POST['customer_state'];
